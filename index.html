@@ -1,190 +1,178 @@
-
 <!DOCTYPE html>
 <html lang="kk">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Кітап Жәрмеңкесі</title>
-  <style>
-    body {
-      font-family: 'Arial', sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #f5f5f5;
-    }
-
-    header {
-      text-align: center;
-      padding: 20px;
-      background: linear-gradient(45deg, #3b5998, #192f6a);
-      color: white;
-    }
-
-    .catalog-buttons {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      padding: 20px;
-    }
-
-    .catalog-btn {
-      border: none;
-      background: white;
-      margin: 10px;
-      padding: 10px;
-      width: 150px;
-      text-align: center;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s, box-shadow 0.3s;
-      cursor: pointer;
-    }
-
-    .catalog-btn:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
-    }
-
-    .catalog-btn img {
-      max-width: 100%;
-      height: auto;
-      border-radius: 8px;
-    }
-
-    #books-section {
-      text-align: center;
-      padding: 20px;
-    }
-
-    #books-list {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-    }
-
-    .book {
-      background: white;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      padding: 10px;
-      width: 200px;
-      text-align: center;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
-
-    .book img {
-      max-width: 100%;
-      height: auto;
-      border-radius: 8px;
-    }
-
-    .book h3 {
-      font-size: 16px;
-      margin: 10px 0;
-    }
-
-    .book p {
-      font-size: 14px;
-      color: #555;
-    }
-
-    .book button {
-      background: #3b5998;
-      color: white;
-      border: none;
-      padding: 10px;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-
-    .book button:hover {
-      background: #192f6a;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кітап жәрмеңкесі</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+        header {
+            background-color: #1e1e2f;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 24px;
+        }
+        .catalog-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 20px;
+        }
+        .catalog-button {
+            background-color: #4CAF50;
+            color: white;
+            margin: 10px;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease;
+        }
+        .catalog-button:hover {
+            transform: scale(1.1);
+            background-color: #45a049;
+        }
+        .catalog-button img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+        .book-list, .book-details {
+            display: none;
+            padding: 20px;
+            text-align: center;
+        }
+        .book-list {
+            background-color: #fff;
+            margin: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .book-item {
+            margin: 10px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        .book-item:hover {
+            background-color: #f0f0f0;
+        }
+        .buy-button {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            margin-top: 15px;
+            cursor: pointer;
+        }
+        .buy-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <h1>Кітап Жәрмеңкесі</h1>
-    <p>Өзіңізге ұнайтын кітапты таңдаңыз</p>
-  </header>
 
-  <main>
-    <div class="catalog-buttons">
-      <button class="catalog-btn" data-category="fantasy">
-        <img src="images/fantasy.jpg" alt="Фантастика">
-        <span>Фантастика</span>
-      </button>
-      <button class="catalog-btn" data-category="romance">
-        <img src="images/romance.jpg" alt="Романтика">
-        <span>Романтика</span>
-      </button>
-      <button class="catalog-btn" data-category="detective">
-        <img src="images/detective.jpg" alt="Детектив">
-        <span>Детектив</span>
-      </button>
-      <button class="catalog-btn" data-category="adventure">
-        <img src="images/adventure.jpg" alt="Приключения">
-        <span>Приключения</span>
-      </button>
-      <button class="catalog-btn" data-category="science">
-        <img src="images/science.jpg" alt="Ғылыми әдебиет">
-        <span>Ғылыми әдебиет</span>
-      </button>
-      <button class="catalog-btn" data-category="self-development">
-        <img src="images/self-development.jpg" alt="Өзін-өзі дамыту">
-        <span>Өзін-өзі дамыту</span>
-      </button>
-    </div>
+<header>Кітап жәрмеңкесі</header>
 
-    <section id="books-section">
-      <h2>Таңдалған жанр кітаптары</h2>
-      <div id="books-list"></div>
-    </section>
-  </main>
+<div class="catalog-container">
+    <button class="catalog-button" onclick="showBooks('fantasy')">
+        <img src="fantasy-icon.png" alt="Фантастика"> Фантастика
+    </button>
+    <button class="catalog-button" onclick="showBooks('fantasy')">
+        <img src="fantasy-icon.png" alt="Фантастика"> Фантастика
+    </button>
+<button class="catalog-button" onclick="showBooks('fantasy')">
+        <img src="fantasy-icon.png" alt="Фантастика"> Фантастика
+    </button>
+    <button class="catalog-button" onclick="showBooks('detective')">
+        <img src="detective-icon.png" alt="Детектив"> Детектив
+    </button>
+    <button class="catalog-button" onclick="showBooks('romance')">
+        <img src="romance-icon.png" alt="Романтика"> Романтика
+    </button>
+    <button class="catalog-button" onclick="showBooks('adventure')">
+        <img src="adventure-icon.png" alt="Приключения"> Приключения
+    </button>
+    <button class="catalog-button" onclick="showBooks('science')">
+        <img src="science-icon.png" alt="Ғылыми әдебиет"> Ғылыми әдебиет
+    </button>
+    <button class="catalog-button" onclick="showBooks('selfdevelopment')">
+        <img src="selfdevelopment-icon.png" alt="Саморазвитие"> Саморазвитие
+    </button>
+</div>
 
-  <script>
-    const booksData = {
-      fantasy: [
-        { title: "Дюна", description: "Ғарыш әлеміндегі эпикалық оқиға.", image: "images/dune.jpg", pdf: "dune.pdf" },
-        { title: "Фантастикалық Жұлдыз", description: "Жұлдыздар әлемінің тарихы.", image: "images/star.jpg", pdf: "star.pdf" },
-      ],
-      romance: [
-        { title: "Жүрек сыры", description: "Махаббат пен эмоцияларға толы оқиға.", image: "images/love.jpg", pdf: "love.pdf" },
-        { title: "Махаббат әлемі", description: "Сезімдерге арналған роман.", image: "images/romance2.jpg", pdf: "romance2.pdf" },
-      ],
-      detective: [
-        { title: "Құпия іздері", description: "Детективтік оқиға.", image: "images/detective1.jpg", pdf: "detective1.pdf" },
-        { title: "Күдікті оқиға", description: "Жұмбаққа толы әңгіме.", image: "images/detective2.jpg", pdf: "detective2.pdf" },
-      ],
-      // Қалған категорияларға да осылай қосу
+<div id="book-list" class="book-list"></div>
+
+<div id="book-details" class="book-details">
+    <h2 id="book-title"></h2>
+    <p id="book-description"></p>
+    <button class="buy-button" onclick="buyBook()">Кітапты сатып алу</button>
+</div>
+
+<script>
+    const books = {
+        fantasy: [
+            { title: "Дюна", description: "Шөлдегі күрес пен саяси ойындар." },
+            { title: "1984", description: "Тоталитарлық қоғамның болашағы." },
+            { title: "Франкенштейн", description: "Ғылымның қауіпті жақтары." },
+            { title: "Жұлдызды соғыстар", description: "Ғарышта шытырман оқиғалар." },
+            { title: "Матрица", description: "Жасанды интеллект әлемі." }
+        ],
+        detective: [
+            { title: "Шерлок Холмстың шытырмандары", description: "Аңызға айналған детектив." },
+            { title: "Өлімнің он кішкентай негрлері", description: "Жұмбақ өлтіру оқиғалары." },
+            { title: "Дан Браунның Кодексі", description: "Жұмбақ шифрларды ашу." },
+            { title: "Молчание ягнят", description: "Қылмыскердің ақыл-ойы." },
+            { title: "Девушка с татуировкой дракона", description: "Іздеу және қылмысты ашу." }
+        ],
+        romance: [
+            { title: "Гордость и предубеждение", description: "Махаббат пен қоғам туралы." },
+            { title: "Ромео мен Джульетта", description: "Шынайы махаббаттың трагедиясы." },
+            { title: "Нәзіктік", description: "Таңғажайып махаббат оқиғасы." },
+            { title: "Қыз Жібек", description: "Классикалық қазақ романтикасы." },
+            { title: "Сен мені сүйесің бе?", description: "Махаббат хикаясы." }
+        ]
     };
 
-    document.querySelectorAll(".catalog-btn").forEach((button) => {
-      button.addEventListener("click", () => {
-        const category = button.dataset.category;
-        const booksList = booksData[category];
-        const booksSection = document.getElementById("books-list");
-
-        booksSection.innerHTML = ""; // Тазалау
-        booksList.forEach((book) => {
-          const bookDiv = document.createElement("div");
-          bookDiv.classList.add("book");
-
-          bookDiv.innerHTML = `
-            <img src="${book.image}" alt="${book.title}">
-            <h3>${book.title}</h3>
-            <p>${book.description}</p>
-            <button onclick="buyBook('${book.pdf}')">Кітапты жүктеу</button>
-          `;
-          booksSection.appendChild(bookDiv);
+    function showBooks(category) {
+        const bookList = document.getElementById("book-list");
+        const bookDetails = document.getElementById("book-details");
+        bookList.innerHTML = "";
+        books[category].forEach((book, index) => {
+            const bookItem = document.createElement("div");
+            bookItem.className = "book-item";
+            bookItem.innerText = book.title;
+            bookItem.onclick = () => showDetails(category, index);
+            bookList.appendChild(bookItem);
         });
-      });
-    });
-
-    function buyBook(pdf) {
-      alert("Кітапты жүктеу үшін Kaspi нөміріне төлем жасаңыз: +77072258658. Төлем жасалғаннан кейін файлды жүктей аласыз.");
+        bookList.style.display = "block";
+        bookDetails.style.display = "none";
     }
-  </script>
+
+    function showDetails(category, index) {
+        const book = books[category][index];
+        document.getElementById("book-title").innerText = book.title;
+        document.getElementById("book-description").innerText = book.description;
+        document.getElementById("book-list").style.display = "none";
+        document.getElementById("book-details").style.display = "block";
+    }
+
+    function buyBook() {
+        alert("Кітапты сатып алу үшін Kaspi нөміріне төлеңіз: +77072258658");
+    }
+</script>
+
 </body>
 </html>
