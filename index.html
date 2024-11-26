@@ -1,117 +1,174 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="kk">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Благотворительный книжный магазин</title>
+    <title>Кітаптар дүкені</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f8f8f8;
+            background-color: #f3f4f6;
             color: #333;
         }
         header {
-            background: #4CAF50;
+            background-color: #4CAF50;
             color: white;
-            padding: 1.5rem 0;
+            padding: 20px;
             text-align: center;
         }
         .container {
             width: 90%;
             max-width: 1200px;
-            margin: 2rem auto;
+            margin: 20px auto;
+        }
+        .category {
+            margin-bottom: 20px;
+        }
+        .category h2 {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .books {
             display: flex;
             flex-wrap: wrap;
-            gap: 1.5rem;
-            justify-content: center;
+            gap: 20px;
+            justify-content: space-between;
         }
         .book-card {
-            background: white;
+            background-color: #fff;
             border: 1px solid #ddd;
             border-radius: 8px;
-            width: 300px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            width: calc(20% - 10px);
+            text-align: center;
+            padding: 10px;
         }
         .book-card img {
             width: 100%;
-            border-top-left-radius: 8px;
-            border-top-right-radius: 8px;
-        }
-        .book-content {
-            padding: 1rem;
-            text-align: center;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px 8px 0 0;
         }
         .book-title {
-            font-size: 1.2rem;
-            font-weight: bold;
-            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+            margin: 10px 0;
         }
-        .book-description {
+        .book-desc {
             font-size: 0.9rem;
-            color: #555;
-            margin-bottom: 1rem;
+            color: #666;
+            margin: 10px 0;
         }
-        .payment-btn {
-            display: inline-block;
-            padding: 0.5rem 1rem;
-            background: #f39c12;
+        .donate-btn {
+            background-color: #FF9800;
             color: white;
-            text-decoration: none;
+            padding: 10px 20px;
+            border: none;
             border-radius: 5px;
-            margin-bottom: 1rem;
-            transition: background 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            margin: 10px 0;
+            cursor: pointer;
         }
-        .payment-btn:hover {
-            background: #e67e22;
+        .donate-btn:hover {
+            background-color: #e68900;
         }
         footer {
-            background: #333;
+            background-color: #333;
             color: white;
             text-align: center;
-            padding: 1rem 0;
-            margin-top: 2rem;
+            padding: 20px;
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Благотворительный книжный магазин</h1>
-        <p>Поддержите благотворительность и получите полезные книги!</p>
+        <h1>Кітаптар дүкені</h1>
+        <p>Жанрлар бойынша үздік кітаптар</p>
     </header>
-    <main class="container">
-        <!-- Книга 1 -->
-        <div class="book-card">
-            <img src="https://via.placeholder.com/300x400" alt="Обложка книги 1">
-            <div class="book-content">
-                <div class="book-title">Война и мир</div>
-                <div class="book-description">Классический роман Льва Толстого о любви и войне.</div>
-                <a href="https://kaspi.kz/pay/+77072258658" target="_blank" class="payment-btn">Оплатить</a>
+
+    <div class="container">
+        <!-- Категория: Фантастика -->
+        <div class="category">
+            <h2>Фантастика</h2>
+            <div class="books">
+                <div class="book-card">
+                    <img src="https://via.placeholder.com/300x200" alt="Кітап">
+                    <div class="book-title">Дюна</div>
+                    <div class="book-desc">Фрэнк Герберт</div>
+                    <a class="donate-btn" href="https://kaspi.kz/pay/+77072258658" target="_blank">Сатып алу</a>
+                </div>
+                <div class="book-card">
+                    <img src="https://via.placeholder.com/300x200" alt="Кітап">
+                    <div class="book-title">1984</div>
+                    <div class="book-desc">Джордж Оруэлл</div>
+                    <a class="donate-btn" href="https://kaspi.kz/pay/+77072258658" target="_blank">Сатып алу</a>
+                </div>
+                <div class="book-card">
+                    <img src="https://via.placeholder.com/300x200" alt="Кітап">
+                    <div class="book-title">Жат планета</div>
+                    <div class="book-desc">Рэй Брэдбери</div>
+                    <a class="donate-btn" href="https://kaspi.kz/pay/+77072258658" target="_blank">Сатып алу</a>
+                </div>
+                <div class="book-card">
+                    <img src="https://via.placeholder.com/300x200" alt="Кітап">
+                    <div class="book-title">Құдайдың кітабы</div>
+                    <div class="book-desc">Айзек Азимов</div>
+                    <a class="donate-btn" href="https://kaspi.kz/pay/+77072258658" target="_blank">Сатып алу</a>
+                </div>
+                <div class="book-card">
+                    <img src="https://via.placeholder.com/300x200" alt="Кітап">
+                    <div class="book-title">Гиперион</div>
+                    <div class="book-desc">Дэн Симмонс</div>
+                    <a class="donate-btn" href="https://kaspi.kz/pay/+77072258658" target="_blank">Сатып алу</a>
+                </div>
             </div>
         </div>
-        <!-- Книга 2 -->
-        <div class="book-card">
-            <img src="https://via.placeholder.com/300x400" alt="Обложка книги 2">
-            <div class="book-content">
-                <div class="book-title">Преступление и наказание</div>
-                <div class="book-description">Роман Фёдора Достоевского о моральных дилеммах и искуплении.</div>
-                <a href="https://kaspi.kz/pay/+77072258658" target="_blank" class="payment-btn">Оплатить</a>
+
+        <!-- Категория: Фэнтези -->
+        <div class="category">
+            <h2>Фэнтези</h2>
+            <div class="books">
+                <div class="book-card">
+                    <img src="https://via.placeholder.com/300x200" alt="Кітап">
+                    <div class="book-title">Сақиналар әміршісі</div>
+                    <div class="book-desc">Дж. Р. Р. Толкин</div>
+                    <a class="donate-btn" href="https://kaspi.kz/pay/+77072258658" target="_blank">Сатып алу</a>
+                </div>
+                <div class="book-card">
+                    <img src="https://via.placeholder.com/300x200" alt="Кітап">
+                    <div class="book-title">Гарри Поттер</div>
+                    <div class="book-desc">Дж. К. Роулинг</div>
+                    <a class="donate-btn" href="https://kaspi.kz/pay/+77072258658" target="_blank">Сатып алу</a>
+                </div>
+                <div class="book-card">
+                    <img src="https://via.placeholder.com/300x200" alt="Кітап">
+                    <div class="book-title">Мұз және От әні</div>
+                    <div class="book-desc">Джордж Р. Р. Мартин</div>
+                    <a class="donate-btn" href="https://kaspi.kz/pay/+77072258658" target="_blank">Сатып алу</a>
+                </div>
+                <div class="book-card">
+                    <img src="https://via.placeholder.com/300x200" alt="Кітап">
+                    <div class="book-title">Эрагон</div>
+                    <div class="book-desc">Кристофер Паолини</div>
+                    <a class="donate-btn" href="https://kaspi.kz/pay/+77072258658" target="_blank">Сатып алу</a>
+                </div>
+                <div class="book-card">
+                    <img src="https://via.placeholder.com/300x200" alt="Кітап">
+                    <div class="book-title">Қара мұнара</div>
+                    <div class="book-desc">Стивен Кинг</div>
+                    <a class="donate-btn" href="https://kaspi.kz/pay/+77072258658" target="_blank">Сатып алу</a>
+                </div>
             </div>
         </div>
-        <!-- Книга 3 -->
-        <div class="book-card">
-            <img src="https://via.placeholder.com/300x400" alt="Обложка книги 3">
-            <div class="book-content">
-                <div class="book-title">Мастер и Маргарита</div>
-                <div class="book-description">Мистический роман Михаила Булгакова о добре и зле.</div>
-                <a href="https://kaspi.kz/pay/+77072258658" target="_blank" class="payment-btn">Оплатить</a>
-            </div>
-        </div>
-    </main>
+    </div>
+
     <footer>
-        <p>&copy; 2024 Благотворительный книжный магазин. Все права защищены.</p>
-        <p>Контакты для вопросов: +77072258658</p>
+        <p>&copy; 2024 Кітаптар дүкені. Барлық құқықтар қорғалған.</p>
+        <p>Көмек қажет болса, бізге хабарласыңыз: +77072258658</p>
     </footer>
 </body>
 </html>
