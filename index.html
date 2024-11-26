@@ -3,197 +3,239 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Кітаптар Каталогы</title>
+    <title>Кітап жәрмеңкесі</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
             margin: 0;
             padding: 0;
+            background-color: #f5f5f5;
         }
-
-        .catalog {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 20px;
-        }
-
-        .catalog-category {
-            margin-top: 30px;
-            font-size: 24px;
-            font-weight: bold;
-            cursor: pointer;
-            color: #007BFF;
-        }
-
-        .book-list {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            max-width: 1200px;
-            margin-top: 30px;
-        }
-
-        .book-item {
+        header {
+            background-color: #1e1e2f;
+            color: white;
             text-align: center;
-            cursor: pointer;
-        }
-
-        .book-item img {
-            width: 100px;
-            height: 150px;
-            object-fit: cover;
-            border-radius: 8px;
-        }
-
-        .book-details {
             padding: 20px;
-            margin-top: 50px;
-            background-color: #fff;
-            border-radius: 8px;
-            max-width: 900px;
-            margin: auto;
-            display: none;
-        }
-
-        .book-details h2 {
             font-size: 24px;
-            color: #333;
         }
-
-        .book-details p {
+        .catalog-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 20px;
+        }
+        .catalog-button {
+            background-color: #4CAF50;
+            color: white;
+            margin: 10px;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
             font-size: 18px;
-            color: #666;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease;
         }
-
-        .button {
-            margin-top: 20px;
-            padding: 10px 20px;
+        .catalog-button:hover {
+            transform: scale(1.1);
+            background-color: #45a049;
+        }
+        .catalog-button img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+        .book-list, .book-details {
+            display: none;
+            padding: 20px;
+            text-align: center;
+        }
+        .book-list {
+            background-color: #fff;
+            margin: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .book-item {
+            margin: 10px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+        .book-item:hover {
+            background-color: #f0f0f0;
+        }
+        .book-details {
+            background-color: white;
+            margin: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .book-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+        .buy-button {
             background-color: #007BFF;
-            color: #fff;
+            color: white;
+            padding: 10px 20px;
             border: none;
             border-radius: 5px;
+            margin-top: 15px;
             cursor: pointer;
         }
-
-        .button:hover {
+        .buy-button:hover {
             background-color: #0056b3;
         }
     </style>
 </head>
 <body>
-    <div class="catalog">
-        <h1>Кітаптар Каталогы</h1>
 
-        <!-- Категорияларды көрсету -->
-        <div class="catalog-category" onclick="showCategory('fiction')">Фантастика</div>
-        <div class="catalog-category" onclick="showCategory('history')">Тарих</div>
-        <div class="catalog-category" onclick="showCategory('romance')">Роман</div>
+<header>Кітап жәрмеңкесі</header>
 
-        <!-- Кітаптар тізімі (бастапқыда барлық кітаптар көрсетіледі) -->
-        <div class="book-list" id="book-list"></div>
-    </div>
+<div class="catalog-container">
+    <button class="catalog-button" onclick="showBooks('fantasy')">
+        <img src="fantasy-icon.png" alt="Фантастика"> Фантастика
+    </button>
+    <button class="catalog-button" onclick="showBooks('detective')">
+        <img src="detective-icon.png" alt="Детектив"> Детектив
+    </button>
+    <button class="catalog-button" onclick="showBooks('romance')">
+        <img src="romance-icon.png" alt="Романтика"> Романтика
+    </button>
+    <button class="catalog-button" onclick="showBooks('adventure')">
+        <img src="adventure-icon.png" alt="Приключения"> Приключения
+    </button>
+    <button class="catalog-button" onclick="showBooks('science')">
+        <img src="science-icon.png" alt="Ғылыми әдебиет"> Ғылыми әдебиет
+    </button>
+    <button class="catalog-button" onclick="showBooks('selfdevelopment')">
+        <img src="selfdevelopment-icon.png" alt="Саморазвитие"> Саморазвитие
+    </button>
+</div>
 
-    <div id="book-details" class="book-details">
-        <!-- Кітаптың толық мәліметі -->
-    </div>
+<div id="book-list" class="book-list"></div>
 
-    <script>
-        const books = {
-            fiction: [
-                {
-                    title: "Дюна",
-                    description: "Шөлдегі күрес пен саяси ойындар.",
-                    image: "https://via.placeholder.com/100x150?text=Dune",
-                    releaseDate: "1965",
-                    author: "Фрэнк Герберт",
-                    price: "5000 тг"
-                },
-                {
-                    title: "1984",
-                    description: "Тоталитарлық қоғамның болашағы.",
-                    image: "https://via.placeholder.com/100x150?text=1984",
-                    releaseDate: "1949",
-                    author: "Джордж Орвелл",
-                    price: "4000 тг"
-                },
-                {
-                    title: "Франкенштейн",
-                    description: "Ғылымның қауіпті жақтары.",
-                    image: "https://via.placeholder.com/100x150?text=Frankenstein",
-                    releaseDate: "1818",
-                    author: "Мэри Шелли",
-                    price: "3000 тг"
-                }
-            ],
-            history: [
-                {
-                    title: "Тарихтың басталуы",
-                    description: "Ежелгі заманнан бастап адамзат тарихына шолу.",
-                    image: "https://via.placeholder.com/100x150?text=History",
-                    releaseDate: "2020",
-                    author: "Николай Лобачевский",
-                    price: "3500 тг"
-                },
-                {
-                    title: "Ұлы Жібек Жолы",
-                    description: "Ұлы Жібек Жолы туралы мәліметтер.",
-                    image: "https://via.placeholder.com/100x150?text=SilkRoad",
-                    releaseDate: "2019",
-                    author: "Артур Реймер",
-                    price: "4000 тг"
-                }
-            ],
-            romance: [
-                {
-                    title: "Махаббат хикаясы",
-                    description: "Талантты жазушының махаббат туралы шығармасы.",
-                    image: "https://via.placeholder.com/100x150?text=Romance",
-                    releaseDate: "2018",
-                    author: "Клара Шепард",
-                    price: "2500 тг"
-                }
-            ]
-        };
+<div id="book-details" class="book-details">
+    <img id="book-image" class="book-image" src="" alt="Кітап суреті">
+    <h2 id="book-title"></h2>
+    <p id="book-description"></p>
+    <p id="book-release-date"></p>
+    <button class="buy-button" onclick="buyBook()">Кітапты сатып алу</button>
+</div>
 
-        // Категорияны көрсету функциясы
-        function showCategory(category) {
-            const bookList = document.getElementById('book-list');
-            bookList.innerHTML = ''; // Алдымен тізімді тазалаңыз
+<script>
+    const books = {
+        fantasy: [
+            { title: "Дюна", description: "Шөлдегі күрес пен саяси ойындар.", releaseDate: "1965", image: "dune.jpg" },
+            { title: "1984", description: "Тоталитарлық қоғамның болашағы.", releaseDate: "1949", image: "1984.jpg" },
+            { title: "Франкенштейн", description: "Ғылымның қауіпті жақтары.", releaseDate: "1818", image: "frankenstein.jpg" },
+            { title: "Жұлдызды соғыстар", description: "Ғарышта шытырман оқиғалар.", releaseDate: "1977", image: "starwars.jpg" },
+            { title: "Матрица", description: "Жасанды интеллект әлемі.", releaseDate: "1999", image: "matrix.jpg" }
+        ],
+        detective: [
+            { title: "Шерлок Холмс", description: "Ұлы детективтің кейіпкерлері.", releaseDate: "1887", image: "sherlock.jpg" },
+            { title: "По следам преступников", description: "Қылмыстарды шешу жолы.", releaseDate: "1990", image: "crime.jpg" },
+            { title: "Агата Кристи: Убийство в Восточном экспрессе", description: "Танымал детектив жазушысының шығармасы.", releaseDate: "1934", image: "agatha.jpg" },
+            { title: "Девушка с татуировкой дракона", description: "Қылмыс пен зерттеу арқылы ашылатын құпия.", releaseDate: "2005", image: "dragon-tattoo.jpg" },
+            { title: "Тайна третьей планеты", description: "Ғылым мен детективтің бірлесуі.", releaseDate: "1981", image: "thirdplanet.jpg" }
+        ],
+        romance: [
+            { title: "Тет-а-тет", description: "Жас жұбайлардың өміріндегі қиындықтар.", releaseDate: "2015", image: "tetatet.jpg" },
+            { title: "Жауапсыз сұрақтар", description: "Ғашықтар арасындағы сұрақтар мен жауаптар.", releaseDate: "2010", image: "questions.jpg" },
+            { title: "Жоғалған қателік", description: "Махаббат туралы оқиға.", releaseDate: "2012", image: "mistake.jpg" },
+            { title: "Өмірдің екінші жартысы", description: "Ғашықтардың кездесу жолы.", releaseDate: "2008", image: "secondhalf.jpg" },
+            { title: "Жұлдыздарға ғашық", description: "Өмір мен махаббаттың әсемдігі.", releaseDate: "2018", image: "stars.jpg" }
+        ],
+        adventure: [
+            { title: "Индиана Джонс", description: "Археологтың қызықты шытырман оқиғасы.", releaseDate: "1981", image: "indiana.jpg" },
+            { title: "Көшпенділер", description: "Ежелгі уақыттағы адамдардың ерлігі.", releaseDate: "1994", image: "nomads.jpg" },
+            { title: "Гарри Поттер және философский камень", description: "Құпиялар мен оқиғалар әлемі.", releaseDate: "1997", image: "harrypotter.jpg" },
+            { title: "Жаңа әлем", description: "Табиғат пен адамдардың жаңа әлемі.", releaseDate: "2020", image: "newworld.jpg" },
+            { title: "Алтын аймақ", description: "Жас батырдың саяхаты мен ізденісі.", releaseDate: "2015", image: "goldenland.jpg" }
+        ],
+        science: [
+            {
+                title: "A Brief History of Time",
+                description: "Stephen Hawking's groundbreaking work on the nature of time and the universe.",
+                image: "https://example.com/brief-history-of-time.jpg"
+            },
+            {
+                title: "The Selfish Gene",
+                description: "Richard Dawkins' influential work on the theory of evolution and the role of genes in survival.",
+                image: "https://example.com/selfish-gene.jpg"
+            }
+        ],
+        technology: [
+            {
+                title: "The Innovators",
+                description: "Walter Isaacson's chronicle of the people who created the computer and the internet.",
+                image: "https://example.com/innovators.jpg"
+            },
+            {
+                title: "Steve Jobs",
+                description: "The biography of Steve Jobs by Walter Isaacson, capturing the vision and innovations of Apple's co-founder.",
+                image: "https://example.com/steve-jobs.jpg"
+            }
+        ],
+        history: [
+            {
+                title: "Sapiens: A Brief History of Humankind",
+                description: "Yuval Noah Harari's look at the history of human civilization, from the Stone Age to the modern day.",
+                image: "https://example.com/sapiens.jpg"
+            },
+            {
+                title: "The Wright Brothers",
+                description: "David McCullough's account of the lives and achievements of the Wright brothers, pioneers of aviation.",
+                image: "https://example.com/wright-brothers.jpg"
+            }
+        ]
+    };
 
-            books[category].forEach((book, index) => {
-                const bookItem = document.createElement('div');
-                bookItem.classList.add('book-item');
-                bookItem.onclick = () => viewBookDetails(index, category);
-                bookItem.innerHTML = `
-                    <img src="${book.image}" alt="${book.title}">
-                    <h3>${book.title}</h3>
-                `;
-                bookList.appendChild(bookItem);
-            });
-        }
+    // Кітаптар санатындағы кітаптарды көрсету
+    function showBooks(category) {
+        const bookList = document.getElementById("book-list");
+        const bookDetails = document.getElementById("book-details");
+        bookList.innerHTML = "";  // Бұрынғы кітаптар тізімін тазалау
 
-        // Кітаптың толық мәліметін көрсету функциясы
-        function viewBookDetails(index, category) {
-            const book = books[category][index];
-            const details = document.getElementById('book-details');
-            details.style.display = 'block';
-            details.innerHTML = `
-                <h2>${book.title}</h2>
-                <img src="${book.image}" alt="${book.title}">
-                <p><strong>Автор:</strong> ${book.author}</p>
-                <p><strong>Шыққан күні:</strong> ${book.releaseDate}</p>
-                <p><strong>Сипаттама:</strong> ${book.description}</p>
-                <p><strong>Бағасы:</strong> ${book.price}</p>
-                <button class="button" onclick="purchaseBook()">Сатып алу</button>
-            `;
-        }
+        // Әр кітап үшін кітап элементін қосу
+        books[category].forEach((book, index) => {
+            const bookItem = document.createElement("div");
+            bookItem.className = "book-item";
+            bookItem.innerText = book.title;
+            bookItem.onclick = () => showDetails(category, index);  // Кітап туралы ақпаратты көрсету
+            bookList.appendChild(bookItem);
+        });
 
-        // Кітапты сатып алу функциясы
-        function purchaseBook() {
-            alert("Кітапты сатып алу процесі басталды!");
-        }
-    </script>
+        // Кітаптар тізімін көрсету, кітаптың егжей-тегжейін жасыру
+        bookList.style.display = "block";
+        bookDetails.style.display = "none";
+    }
+
+    // Кітаптың егжей-тегжейін көрсету
+    function showDetails(category, index) {
+        const book = books[category][index];
+        document.getElementById("book-title").innerText = book.title;
+        document.getElementById("book-description").innerText = book.description;
+        document.getElementById("book-image").src = book.image;
+
+        // Кітаптар тізімін жасыру, кітап туралы мәліметті көрсету
+        document.getElementById("book-list").style.display = "none";
+        document.getElementById("book-details").style.display = "block";
+    }
+
+    // Кітапты сатып алу функциясы
+    function buyBook() {
+        // Кітапты сатып алу үшін сілтеме жасау
+        window.location.href = "https://kaspi.kz/pay/+77072258658";
+    }
+</script>
 </body>
 </html>
