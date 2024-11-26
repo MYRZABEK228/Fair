@@ -180,36 +180,36 @@
 
     <div class="catalog-container">
         <div class="catalog-item" data-genre="fantastic">
-            <img src="https://via.placeholder.com/250x200?text=Фантастика" alt="Фантастика">
+            <img src="https://images.unsplash.com/photo-1509082784882-44b5da8b0d9c?fit=crop&w=250&h=200" alt="Фантастика">
             <h3>Фантастика</h3>
         </div>
         <div class="catalog-item" data-genre="detective">
-            <img src="https://via.placeholder.com/250x200?text=Детектив" alt="Детектив">
+            <img src="https://images.unsplash.com/photo-1562160375-b1b5d8e1b408?fit=crop&w=250&h=200" alt="Детектив">
             <h3>Детектив</h3>
         </div>
         <div class="catalog-item" data-genre="romance">
-            <img src="https://via.placeholder.com/250x200?text=Романтика" alt="Романтика">
+            <img src="https://images.unsplash.com/photo-1521747116042-5e746d1e9e62?fit=crop&w=250&h=200" alt="Романтика">
             <h3>Романтика</h3>
         </div>
         <div class="catalog-item" data-genre="adventure">
-            <img src="https://via.placeholder.com/250x200?text=Приключения" alt="Приключения">
+            <img src="https://images.unsplash.com/photo-1462322141070-1a3ab682f7b3?fit=crop&w=250&h=200" alt="Приключения">
             <h3>Приключения</h3>
         </div>
         <div class="catalog-item" data-genre="science">
-            <img src="https://via.placeholder.com/250x200?text=Ғылым" alt="Ғылым">
-            <h3>Ғылым</h3>
+            <img src="https://images.unsplash.com/photo-1502783180505-d2732d116c0b?fit=crop&w=250&h=200" alt="Наука">
+            <h3>Наука</h3>
         </div>
         <div class="catalog-item" data-genre="history">
-            <img src="https://via.placeholder.com/250x200?text=Тарих" alt="Тарих">
-            <h3>Тарих</h3>
+            <img src="https://images.unsplash.com/photo-1519289782861-b7a04bb2ac51?fit=crop&w=250&h=200" alt="История">
+            <h3>История</h3>
         </div>
         <div class="catalog-item" data-genre="horror">
-            <img src="https://via.placeholder.com/250x200?text=Қорқыныш" alt="Қорқыныш">
-            <h3>Қорқыныш</h3>
+            <img src="https://images.unsplash.com/photo-1542111088-b055c0c8ab70?fit=crop&w=250&h=200" alt="Ужасы">
+            <h3>Ужасы</h3>
         </div>
     </div>
 
-    <div id="book-container">
+    <div id="book-container" class="book-list">
         <!-- Карточки книг будут динамически загружаться через JS -->
     </div>
 
@@ -218,18 +218,91 @@
     <script>
         const genres = {
             fantastic: [
-                { title: "Дюна", img: "https://via.placeholder.com/200x150?text=Dune", pdf: "dune.pdf" },
-                { title: "Фонд", img: "https://via.placeholder.com/200x150?text=Foundation", pdf: "foundation.pdf" },
-                { title: "451° Фаренгейт", img: "https://via.placeholder.com/200x150?text=451°F", pdf: "451.pdf" },
-                { title: "Марсианин", img: "https://via.placeholder.com/200x150?text=Martian", pdf: "martian.pdf" },
-                { title: "Робинзон Крузо", img: "https://via.placeholder.com/200x150?text=Crusoe", pdf: "crusoe.pdf" },
+                { title: "Дюна", img: "https://images.unsplash.com/photo-1600494498282-02004ed946f2?fit=crop&w=200&h=150", pdf: "dune.pdf" },
+                { title: "Фонд", img: "https://images.unsplash.com/photo-1598620307559-2097bfc6045d?fit=crop&w=200&h=150", pdf: "foundation.pdf" },
+                { title: "451° Фаренгейт", img: "https://images.unsplash.com/photo-1605312705643-b1b6046b3e6c?fit=crop&w=200&h=150", pdf: "451.pdf" },
+                { title: "Марсианин", img: "https://images.unsplash.com/photo-1508657961767-9e7392d55799?fit=crop&w=200&h=150", pdf: "martian.pdf" },
+                { title: "Робинзон Крузо", img: "https://images.unsplash.com/photo-1502922370017-c36e55a2a839?fit=crop&w=200&h=150", pdf: "crusoe.pdf" },
             ],
             detective: [
-                { title: "Шерлок Холмс", img: "https://via.placeholder.com/200x150?text=Sherlock", pdf: "sherlock.pdf" },
-                { title: "Десять негритят", img: "https://via.placeholder.com/200x150?text=Ten", pdf: "ten.pdf" },
-                { title: "Агата Кристи", img: "https://via.placeholder.com/200x150?text=Agatha", pdf: "agatha.pdf" },
-                { title: "Убийство в Восточном экспрессе", img: "https://via.placeholder.com/200x150?text=Murder", pdf: "murder.pdf" },
-                { title: "Американский психопат", img: "https://via.placeholder.com/200x150?text=Psycho", pdf: "psycho.pdf" },
+                { title: "Шерлок Холмс", img: "https://images.unsplash.com/photo-1562585511-89b327602c6b?fit=crop&w=200&h=150", pdf: "sherlock_holmes.pdf" },
+                { title: "Девушка с татуировкой дракона", img: "https://images.unsplash.com/photo-1560934419-9a0f66c79956?fit=crop&w=200&h=150", pdf: "dragon_tattoo.pdf" },
+                { title: "Убийство в Восточном экспрессе", img: "https://images.unsplash.com/photo-1602469734609-8b5ff5d33419?fit=crop&w=200&h=150", pdf: "orient_express.pdf" },
+                { title: "Зодиак", img: "https://images.unsplash.com/photo-1571225263808-e71735e21955?fit=crop&w=200&h=150", pdf: "zodiac.pdf" },
+                { title: "Тайна дома с часами", img: "https://images.unsplash.com/photo-1543990076-c22598c8f4c1?fit=crop&w=200&h=150", pdf: "house_with_clocks.pdf" },
             ],
             romance: [
-                { title: "Гордость и предубеждение", img: "https://via.placeholder.com/200x150?text=Pride", pdf: "pride.pdf" },
+                { title: "Гордость и предубеждение", img: "https://images.unsplash.com/photo-1532062004305-89c2ef1a084f?fit=crop&w=200&h=150", pdf: "pride_prejudice.pdf" },
+                { title: "Три метра над уровнем неба", img: "https://images.unsplash.com/photo-1536668059332-0ad149c746b4?fit=crop&w=200&h=150", pdf: "three_meters.pdf" },
+                { title: "После", img: "https://images.unsplash.com/photo-1548490991-9c31317f003d?fit=crop&w=200&h=150", pdf: "after.pdf" },
+                { title: "Скрижали судьбы", img: "https://images.unsplash.com/photo-1533132088877-ffae38717fe6?fit=crop&w=200&h=150", pdf: "fate_tablets.pdf" },
+                { title: "Тайна любви", img: "https://images.unsplash.com/photo-1529171730359-07d13ff8a7d9?fit=crop&w=200&h=150", pdf: "mystery_of_love.pdf" },
+            ],
+            adventure: [
+                { title: "Остров сокровищ", img: "https://images.unsplash.com/photo-1604006893977-f7d5ad04b5d4?fit=crop&w=200&h=150", pdf: "treasure_island.pdf" },
+                { title: "Путеводитель по Галактике", img: "https://images.unsplash.com/photo-1542042493-76d1b0f91a5d?fit=crop&w=200&h=150", pdf: "galaxy_guide.pdf" },
+                { title: "Жизнь Пи", img: "https://images.unsplash.com/photo-1507186375756-5f9821d7e865?fit=crop&w=200&h=150", pdf: "life_of_pi.pdf" },
+                { title: "Краткая история времени", img: "https://images.unsplash.com/photo-1493931606842-1979ed6be6a7?fit=crop&w=200&h=150", pdf: "brief_history.pdf" },
+                { title: "Алхимик", img: "https://images.unsplash.com/photo-1573423944445-49d2b2fd7b42?fit=crop&w=200&h=150", pdf: "alchemist.pdf" },
+            ],
+            science: [
+                { title: "Краткая история времени", img: "https://images.unsplash.com/photo-1493931606842-1979ed6be6a7?fit=crop&w=200&h=150", pdf: "brief_history.pdf" },
+                { title: "Сила воли", img: "https://images.unsplash.com/photo-1560791702-1f39652fe13d?fit=crop&w=200&h=150", pdf: "willpower.pdf" },
+                { title: "Самый богатый человек в Вавилоне", img: "https://images.unsplash.com/photo-1587496170612-3a6feff497ba?fit=crop&w=200&h=150", pdf: "richest_man.pdf" },
+                { title: "Эволюция человека", img: "https://images.unsplash.com/photo-1581988772187-faf574490bc7?fit=crop&w=200&h=150", pdf: "human_evolution.pdf" },
+                { title: "Космос и мы", img: "https://images.unsplash.com/photo-1505227361343-33c00d90584e?fit=crop&w=200&h=150", pdf: "cosmos_and_us.pdf" },
+            ],
+            history: [
+                { title: "История мира", img: "https://images.unsplash.com/photo-1605289424577-d4d10f857617?fit=crop&w=200&h=150", pdf: "world_history.pdf" },
+                { title: "Римская империя", img: "https://images.unsplash.com/photo-1594590273808-0990e3d47b93?fit=crop&w=200&h=150", pdf: "roman_empire.pdf" },
+                { title: "Средневековье", img: "https://images.unsplash.com/photo-1598837382242-74000d6cf44c?fit=crop&w=200&h=150", pdf: "middle_ages.pdf" },
+                { title: "Вторая мировая война", img: "https://images.unsplash.com/photo-1578721626346-0563a577e3b8?fit=crop&w=200&h=150", pdf: "ww2.pdf" },
+                { title: "Древний Египет", img: "https://images.unsplash.com/photo-1501719027639-1c6d37a309b7?fit=crop&w=200&h=150", pdf: "ancient_egypt.pdf" },
+            ],
+            horror: [
+                { title: "Оно", img: "https://images.unsplash.com/photo-1554379841-77d6b5e05f3f?fit=crop&w=200&h=150", pdf: "it.pdf" },
+                { title: "Сияние", img: "https://images.unsplash.com/photo-1542134748-e5d404497b9a?fit=crop&w=200&h=150", pdf: "shining.pdf" },
+                { title: "Кошмар на улице Вязов", img: "https://images.unsplash.com/photo-1553492097-c70f5ea6f2cf?fit=crop&w=200&h=150", pdf: "nightmare.pdf" },
+                { title: "Ведьма из Блэр", img: "https://images.unsplash.com/photo-1512763383181-1a2a6ff5489a?fit=crop&w=200&h=150", pdf: "blair_witch.pdf" },
+                { title: "Темные начала", img: "https://images.unsplash.com/photo-1518170128194-9b3f6c2e392b?fit=crop&w=200&h=150", pdf: "dark_materials.pdf" },
+            ]
+        };
+
+        const catalogItems = document.querySelectorAll('.catalog-item');
+        const bookContainer = document.getElementById('book-container');
+        const backButton = document.getElementById('back-button');
+
+        catalogItems.forEach(item => {
+            item.addEventListener('click', function() {
+                const genre = item.getAttribute('data-genre');
+                displayBooks(genre);
+            });
+        });
+
+        function displayBooks(genre) {
+            const books = genres[genre];
+            bookContainer.innerHTML = '';  // Clear the book container
+            books.forEach(book => {
+                const bookCard = document.createElement('div');
+                bookCard.classList.add('book-card');
+
+                bookCard.innerHTML = `
+                    <img src="${book.img}" alt="${book.title}">
+                    <h4>${book.title}</h4>
+                    <a href="${book.pdf}" class="buy-btn" download>Жүктеу</a>
+                `;
+
+                bookContainer.appendChild(bookCard);
+            });
+
+            backButton.style.display = 'block';
+            bookContainer.style.display = 'flex';
+        }
+
+        backButton.addEventListener('click', function() {
+            bookContainer.style.display = 'none';
+            backButton.style.display = 'none';
+        });
+    </script>
+</body>
+</html>
