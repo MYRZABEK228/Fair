@@ -131,51 +131,50 @@
 
 <script>
     const books = {
-         fantasy: [
-    { title: "Дюна", description: "Шөлдегі күрес пен саяси ойындар.", image: "dune.jpg" },
-    { title: "1984", description: "Тоталитарлық қоғамның болашағы.", image: "1984.jpg" },
-    { title: "Франкенштейн", description: "Ғылымның қауіпті жақтары.", image: "frankenstein.jpg" },
-    { title: "Жұлдызды соғыстар", description: "Ғарышта шытырман оқиғалар.", image: "starwars.jpg" },
-    { title: "Матрица", description: "Жасанды интеллект әлемі.", image: "matrix.jpg" }
-].
-         detective: [
-    { title: "Шерлок Холмс", description: "Ұлы детективтің кейіпкерлері.", image: "sherlock.jpg" },
-    { title: "По следам преступников", description: "Қылмыстарды шешу жолы.", image: "crime.jpg" },
-    { title: "Агата Кристи: Убийство в Восточном экспрессе", description: "Танымал детектив жазушысының шығармасы.", image: "agatha.jpg" },
-    { title: "Девушка с татуировкой дракона", description: "Қылмыс пен зерттеу арқылы ашылатын құпия.", image: "dragon-tattoo.jpg" },
-    { title: "Тайна третьей планеты", description: "Ғылым мен детективтің бірлесуі.", image: "thirdplanet.jpg" }
-]
-         romance: [
-    { title: "Тет-а-тет", description: "Жас жұбайлардың өміріндегі қиындықтар.", image: "tetatet.jpg" },
-    { title: "Жауапсыз сұрақтар", description: "Ғашықтар арасындағы сұрақтар мен жауаптар.", image: "questions.jpg" },
-    { title: "Жоғалған қателік", description: "Махаббат туралы оқиға.", image: "mistake.jpg" },
-    { title: "Өмірдің екінші жартысы", description: "Ғашықтардың кездесу жолы.", image: "secondhalf.jpg" },
-    { title: "Жұлдыздарға ғашық", description: "Өмір мен махаббаттың әсемдігі.", image: "stars.jpg" }
-]
-         adventure: [
-    { title: "Индиана Джонс", description: "Археологтың қызықты шытырман оқиғасы.", image: "indiana.jpg" },
-    { title: "Көшпенділер", description: "Ежелгі уақыттағы адамдардың ерлігі.", image: "nomads.jpg" },
-    { title: "Гарри Поттер және философский камень", description: "Құпиялар мен оқиғалар әлемі.", image: "harrypotter.jpg" },
-    { title: "Жаңа әлем", description: "Табиғат пен адамдардың жаңа әлемі.", image: "newworld.jpg" },
-    { title: "Алтын аймақ", description: "Жас батырдың саяхаты мен ізденісі.", image: "goldenland.jpg" }
-]
-         science: [
-    { title: "Қара тесіктер", description: "Ғаламның құпиялары мен табиғаты.", image: "blackholes.jpg" },
-    { title: "Ғылым мен философия", description: "Ғылым мен философияның қиылысуы.", image: "science-philosophy.jpg" },
-    { title: "Жердің тарихы", description: "Жер тарихының толық баяны.", image: "earthhistory.jpg" },
-    { title: "Кванттық физика", description: "Кванттық әлемнің негізгі тұжырымдары.", image: "quantum.jpg" },
-    { title: "Ғаламның құрылымы", description: "Ғаламның ұлы құрылымы туралы зерттеу.", image: "universe.jpg" }
-]
-         selfdevelopment: [
-    { title: "Өзіңді табу", description: "Өмірдегі мән мен мақсатты түсіну.", image: "findyourself.jpg" },
-    { title: "Өзін-өзі басқару", description: "Жеке даму және өзін-өзі жетілдіру.", image: "selfcontrol.jpg" },
-    { title: "Мақсат қою", description: "Өмірдің басты мақсаттарын анықтау.", image: "goalsetting.jpg" },
-    { title: "Уақытты басқару", description: "Өмірдегі уақытты тиімді пайдалану.", image: "timemanagement.jpg" },
-    { title: "Психология", description: "Адамның мінез-құлқын түсіну.", image: "psychology.jpg" }
-]
-    };
-
-    function showBooks(category) {
+    fantasy: [
+        { title: "Дюна", description: "Шөлдегі күрес пен саяси ойындар.", image: "dune.jpg" },
+        { title: "1984", description: "Тоталитарлық қоғамның болашағы.", image: "1984.jpg" },
+        { title: "Франкенштейн", description: "Ғылымның қауіпті жақтары.", image: "frankenstein.jpg" },
+        { title: "Жұлдызды соғыстар", description: "Ғарышта шытырман оқиғалар.", image: "starwars.jpg" },
+        { title: "Матрица", description: "Жасанды интеллект әлемі.", image: "matrix.jpg" }
+    ],
+    detective: [
+        { title: "Шерлок Холмс", description: "Ұлы детективтің кейіпкерлері.", image: "sherlock.jpg" },
+        { title: "По следам преступников", description: "Қылмыстарды шешу жолы.", image: "crime.jpg" },
+        { title: "Агата Кристи: Убийство в Восточном экспрессе", description: "Танымал детектив жазушысының шығармасы.", image: "agatha.jpg" },
+        { title: "Девушка с татуировкой дракона", description: "Қылмыс пен зерттеу арқылы ашылатын құпия.", image: "dragon-tattoo.jpg" },
+        { title: "Тайна третьей планеты", description: "Ғылым мен детективтің бірлесуі.", image: "thirdplanet.jpg" }
+    ],
+    romance: [
+        { title: "Тет-а-тет", description: "Жас жұбайлардың өміріндегі қиындықтар.", image: "tetatet.jpg" },
+        { title: "Жауапсыз сұрақтар", description: "Ғашықтар арасындағы сұрақтар мен жауаптар.", image: "questions.jpg" },
+        { title: "Жоғалған қателік", description: "Махаббат туралы оқиға.", image: "mistake.jpg" },
+        { title: "Өмірдің екінші жартысы", description: "Ғашықтардың кездесу жолы.", image: "secondhalf.jpg" },
+        { title: "Жұлдыздарға ғашық", description: "Өмір мен махаббаттың әсемдігі.", image: "stars.jpg" }
+    ],
+    adventure: [
+        { title: "Индиана Джонс", description: "Археологтың қызықты шытырман оқиғасы.", image: "indiana.jpg" },
+        { title: "Көшпенділер", description: "Ежелгі уақыттағы адамдардың ерлігі.", image: "nomads.jpg" },
+        { title: "Гарри Поттер және философский камень", description: "Құпиялар мен оқиғалар әлемі.", image: "harrypotter.jpg" },
+        { title: "Жаңа әлем", description: "Табиғат пен адамдардың жаңа әлемі.", image: "newworld.jpg" },
+        { title: "Алтын аймақ", description: "Жас батырдың саяхаты мен ізденісі.", image: "goldenland.jpg" }
+    ],
+    science: [
+        { title: "Қара тесіктер", description: "Ғаламның құпиялары мен табиғаты.", image: "blackholes.jpg" },
+        { title: "Ғылым мен философия", description: "Ғылым мен философияның қиылысуы.", image: "science-philosophy.jpg" },
+        { title: "Жердің тарихы", description: "Жер тарихының толық баяны.", image: "earthhistory.jpg" },
+        { title: "Кванттық физика", description: "Кванттық әлемнің негізгі тұжырымдары.", image: "quantum.jpg" },
+        { title: "Ғаламның құрылымы", description: "Ғаламның ұлы құрылымы туралы зерттеу.", image: "universe.jpg" }
+    ],
+    selfdevelopment: [
+        { title: "Өзіңді табу", description: "Өмірдегі мән мен мақсатты түсіну.", image: "findyourself.jpg" },
+        { title: "Өзін-өзі басқару", description: "Жеке даму және өзін-өзі жетілдіру.", image: "selfcontrol.jpg" },
+        { title: "Мақсат қою", description: "Өмірдің басты мақсаттарын анықтау.", image: "goalsetting.jpg" },
+        { title: "Уақытты басқару", description: "Өмірдегі уақытты тиімді пайдалану.", image: "timemanagement.jpg" },
+        { title: "Психология", description: "Адамның мінез-құлқын түсіну.", image: "psychology.jpg" }
+    ]
+};
+function showBooks(category) {
         const bookList = document.getElementById("book-list");
         const bookDetails = document.getElementById("book-details");
         bookList.innerHTML = "";
