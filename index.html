@@ -1,292 +1,189 @@
 <!DOCTYPE html>
 <html lang="kk">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Кітап Жанрлары</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: 'Arial', sans-serif;
-            background-color: #f4f4f9;
-            color: #333;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Кітап Жәрмеңкесі</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f5f5f5;
+    }
 
-        header {
-            background-color: #2c3e50;
-            color: white;
-            padding: 30px;
-            text-align: center;
-            animation: fadeInDown 1s;
-        }
+    header {
+      text-align: center;
+      padding: 20px;
+      background: linear-gradient(45deg, #3b5998, #192f6a);
+      color: white;
+    }
 
-        header h1 {
-            margin: 0;
-            font-size: 2.5rem;
-            letter-spacing: 2px;
-        }
+    .catalog-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 20px;
+    }
 
-        .catalog-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            justify-content: center;
-            padding: 20px;
-        }
+    .catalog-btn {
+      border: none;
+      background: white;
+      margin: 10px;
+      padding: 10px;
+      width: 150px;
+      text-align: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+    }
 
-        .catalog-item {
-            background-color: #fff;
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            width: 250px;
-            text-align: center;
-            cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
-            animation: slideIn 0.5s ease-in-out;
-        }
+    .catalog-btn:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+    }
 
-        .catalog-item img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 10px 10px 0 0;
-            transition: opacity 0.5s;
-        }
+    .catalog-btn img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
 
-        .catalog-item:hover img {
-            opacity: 0.8;
-        }
+    #books-section {
+      text-align: center;
+      padding: 20px;
+    }
 
-        .catalog-item h3 {
-            margin: 10px 0;
-            font-size: 1.2rem;
-        }
+    #books-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
 
-        .catalog-item:hover {
-            transform: scale(1.05);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-        }
+    .book {
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 10px;
+      width: 200px;
+      text-align: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
 
-        .book-list {
-            display: none;
-            flex-wrap: wrap;
-            gap: 20px;
-            justify-content: center;
-            padding: 20px;
-        }
+    .book img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
 
-        .book-card {
-            background-color: #fff;
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            text-align: center;
-            width: 200px;
-            padding: 15px;
-            animation: zoomIn 0.5s ease-in-out;
-        }
+    .book h3 {
+      font-size: 16px;
+      margin: 10px 0;
+    }
 
-        .book-card img {
-            width: 100%;
-            height: 150px;
-            object-fit: cover;
-            border-radius: 10px;
-            transition: transform 0.5s;
-        }
+    .book p {
+      font-size: 14px;
+      color: #555;
+    }
 
-        .book-card:hover img {
-            transform: scale(1.1);
-        }
+    .book button {
+      background: #3b5998;
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
 
-        .book-card h4 {
-            font-size: 1rem;
-            margin: 10px 0;
-        }
-
-        .buy-btn {
-            background-color: #3498db;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            text-decoration: none;
-            font-size: 0.9rem;
-            display: inline-block;
-            margin-top: 10px;
-            transition: background-color 0.3s;
-        }
-
-        .buy-btn:hover {
-            background-color: #2980b9;
-        }
-
-        .back-btn {
-            display: block;
-            margin: 20px auto;
-            padding: 10px 20px;
-            background-color: #e74c3c;
-            color: white;
-            text-align: center;
-            text-decoration: none;
-            border-radius: 5px;
-            width: 150px;
-            transition: background-color 0.3s, transform 0.3s;
-        }
-
-        .back-btn:hover {
-            background-color: #c0392b;
-            transform: scale(1.05);
-        }
-
-        /* Анимации */
-        @keyframes fadeInDown {
-            from {
-                transform: translateY(-30px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        @keyframes slideIn {
-            from {
-                transform: translateX(-50px);
-                opacity: 0;
-            }
-            to {
-                transform: translateX(0);
-                opacity: 1;
-            }
-        }
-
-        @keyframes zoomIn {
-            from {
-                transform: scale(0.8);
-                opacity: 0;
-            }
-            to {
-                transform: scale(1);
-                opacity: 1;
-            }
-        }
-    </style>
+    .book button:hover {
+      background: #192f6a;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>Кітап Жанрлары</h1>
-        <p>Таңдаулы жанрды басыңыз, өзіңізге ұнайтын кітапты алыңыз!</p>
-    </header>
+  <header>
+    <h1>Кітап Жәрмеңкесі</h1>
+    <p>Өзіңізге ұнайтын кітапты таңдаңыз</p>
+  </header>
 
-    <div class="catalog-container" id="catalog-container">
-        <div class="catalog-item" data-genre="fantastic">
-            <img src="https://images.unsplash.com/photo-1509082784882-44b5da8b0d9c?fit=crop&w=250&h=200" alt="Фантастика">
-            <h3>Фантастика</h3>
-        </div>
-        <div class="catalog-item" data-genre="detective">
-            <img src="https://images.unsplash.com/photo-1562160375-b1b5d8e1b408?fit=crop&w=250&h=200" alt="Детектив">
-            <h3>Детектив</h3>
-        </div>
-        <div class="catalog-item" data-genre="romance">
-            <img src="https://images.unsplash.com/photo-1521747116042-5e746d1e9e62?fit=crop&w=250&h=200" alt="Романтика">
-            <h3>Романтика</h3>
-        </div>
-        <div class="catalog-item" data-genre="adventure">
-            <img src="https://images.unsplash.com/photo-1462322141070-1a3ab682f7b3?fit=crop&w=250&h=200" alt="Приключения">
-            <h3>Приключения</h3>
-        </div>
-        <div class="catalog-item" data-genre="science">
-            <img src="https://images.unsplash.com/photo-1502783180505-d2732d116c0b?fit=crop&w=250&h=200" alt="Наука">
-            <h3>Наука</h3>
-        </div>
-        <div class="catalog-item" data-genre="history">
-            <img src="https://images.unsplash.com/photo-1519289782861-b7a04bb2ac51?fit=crop&w=250&h=200" alt="История">
-            <h3>История</h3>
-        </div>
-        <div class="catalog-item" data-genre="horror">
-            <img src="https://images.unsplash.com/photo-1542111088-b055c0c8ab70?fit=crop&w=250&h=200" alt="Ужасы">
-            <h3>Ужасы</h3>
-        </div>
+  <main>
+    <div class="catalog-buttons">
+      <button class="catalog-btn" data-category="fantasy">
+        <img src="images/fantasy.jpg" alt="Фантастика">
+        <span>Фантастика</span>
+      </button>
+      <button class="catalog-btn" data-category="romance">
+        <img src="images/romance.jpg" alt="Романтика">
+        <span>Романтика</span>
+      </button>
+      <button class="catalog-btn" data-category="detective">
+        <img src="images/detective.jpg" alt="Детектив">
+        <span>Детектив</span>
+      </button>
+      <button class="catalog-btn" data-category="adventure">
+        <img src="images/adventure.jpg" alt="Приключения">
+        <span>Приключения</span>
+      </button>
+      <button class="catalog-btn" data-category="science">
+        <img src="images/science.jpg" alt="Ғылыми әдебиет">
+        <span>Ғылыми әдебиет</span>
+      </button>
+      <button class="catalog-btn" data-category="self-development">
+        <img src="images/self-development.jpg" alt="Өзін-өзі дамыту">
+        <span>Өзін-өзі дамыту</span>
+      </button>
     </div>
 
-    <div id="book-container" class="book-list">
-        <!-- Карточки книг будут динамически загружаться через JS -->
-    </div>
+    <section id="books-section">
+      <h2>Таңдалған жанр кітаптары</h2>
+      <div id="books-list"></div>
+    </section>
+  </main>
 
-    <a href="#" id="back-button" class="back-btn" style="display: none;">Артқа</a>
+  <script>
+    const booksData = {
+      fantasy: [
+        { title: "Дюна", description: "Ғарыш әлеміндегі эпикалық оқиға.", image: "images/dune.jpg", pdf: "dune.pdf" },
+        { title: "Фантастикалық Жұлдыз", description: "Жұлдыздар әлемінің тарихы.", image: "images/star.jpg", pdf: "star.pdf" },
+      ],
+      romance: [
+        { title: "Жүрек сыры", description: "Махаббат пен эмоцияларға толы оқиға.", image: "images/love.jpg", pdf: "love.pdf" },
+        { title: "Махаббат әлемі", description: "Сезімдерге арналған роман.", image: "images/romance2.jpg", pdf: "romance2.pdf" },
+      ],
+      detective: [
+        { title: "Құпия іздері", description: "Детективтік оқиға.", image: "images/detective1.jpg", pdf: "detective1.pdf" },
+        { title: "Күдікті оқиға", description: "Жұмбаққа толы әңгіме.", image: "images/detective2.jpg", pdf: "detective2.pdf" },
+      ],
+      // Қалған категорияларға да осылай қосу
+    };
 
-    <script>
-        const genres = {
-            fantastic: [
-                { title: "Дюна", img: "https://images.unsplash.com/photo-1600494498282-02004ed946f2?fit=crop&w=200&h=150", pdf: "dune.pdf" },
-                { title: "Фонд", img: "https://images.unsplash.com/photo-1598620307559-2097bfc6045d?fit=crop&w=200&h=150", pdf: "foundation.pdf" },
-                { title: "451° Фаренгейт", img: "https://images.unsplash.com/photo-1605312705643-b1b6046b3e6c?fit=crop&w=200&h=150", pdf: "451.pdf" },
-                { title: "Марсианин", img: "https://images.unsplash.com/photo-1508657961767-9e7392d55799?fit=crop&w=200&h=150", pdf: "martian.pdf" },
-                { title: "Робинзон Крузо", img: "https://images.unsplash.com/photo-1502922370017-c36e55a2a839?fit=crop&w=200&h=150", pdf: "robinson.pdf" }
-            ],
-            detective: [
-                { title: "Шерлок Холмс", img: "https://images.unsplash.com/photo-1544741215-ccf0f7f84b8d?fit=crop&w=200&h=150", pdf: "sherlock.pdf" },
-                { title: "Убийство в Восточном экспрессе", img: "https://images.unsplash.com/photo-1591151528053-f5b7eec52e62?fit=crop&w=200&h=150", pdf: "murder-express.pdf" }
-            ],
-            romance: [
-                { title: "Гордость и предубеждение", img: "https://images.unsplash.com/photo-1590564798655-7363eddf9c61?fit=crop&w=200&h=150", pdf: "pride-prejudice.pdf" },
-                { title: "До встречи с тобой", img: "https://images.unsplash.com/photo-1506857124155-cab3a8b5823f?fit=crop&w=200&h=150", pdf: "me-before-you.pdf" }
-            ],
-            adventure: [
-                { title: "Остров сокровищ", img: "https://images.unsplash.com/photo-1503622550384-c52f4d3f07fc?fit=crop&w=200&h=150", pdf: "treasure-island.pdf" },
-                { title: "Книга джунглей", img: "https://images.unsplash.com/photo-1507624107221-3bc4e1736a56?fit=crop&w=200&h=150", pdf: "jungle-book.pdf" }
-            ],
-            science: [
-                { title: "Краткая история времени", img: "https://images.unsplash.com/photo-1519578933947-38c4a89ea6b7?fit=crop&w=200&h=150", pdf: "brief-history-time.pdf" },
-                { title: "Теория всего", img: "https://images.unsplash.com/photo-1502280178666-1d8470e90d8b?fit=crop&w=200&h=150", pdf: "theory-of-everything.pdf" }
-            ],
-            history: [
-                { title: "Вторая мировая война", img: "https://images.unsplash.com/photo-1565638682-cb0d5180d5fc?fit=crop&w=200&h=150", pdf: "ww2-history.pdf" },
-                { title: "История Древнего Рима", img: "https://images.unsplash.com/photo-1531335062780-3105d396dfe6?fit=crop&w=200&h=150", pdf: "ancient-rome.pdf" }
-            ],
-            horror: [
-                { title: "Сияние", img: "https://images.unsplash.com/photo-1561601462-e876db62d234?fit=crop&w=200&h=150", pdf: "shining.pdf" },
-                { title: "Оно", img: "https://images.unsplash.com/photo-1560807707-bd2f0502fb56?fit=crop&w=200&h=150", pdf: "it.pdf" }
-            ]
-        };
+    document.querySelectorAll(".catalog-btn").forEach((button) => {
+      button.addEventListener("click", () => {
+        const category = button.dataset.category;
+        const booksList = booksData[category];
+        const booksSection = document.getElementById("books-list");
 
-        // Функция для отображения списка книг по жанру
-        function showBooks(genre) {
-            const bookContainer = document.getElementById("book-container");
-            bookContainer.style.display = "flex";  // Показываем контейнер с книгами
-            document.getElementById("catalog-container").style.display = "none";  // Скрываем каталог жанров
-            const books = genres[genre];
-            bookContainer.innerHTML = "";  // Очищаем контейнер перед загрузкой книг
+        booksSection.innerHTML = ""; // Тазалау
+        booksList.forEach((book) => {
+          const bookDiv = document.createElement("div");
+          bookDiv.classList.add("book");
 
-            books.forEach(book => {
-                const bookCard = document.createElement("div");
-                bookCard.className = "book-card";
-                bookCard.innerHTML = `
-                    <img src="${book.img}" alt="${book.title}">
-                    <h4>${book.title}</h4>
-                    <a href="${book.pdf}" class="buy-btn" target="_blank">Читать</a>
-                `;
-                bookContainer.appendChild(bookCard);
-            });
-
-            // Показываем кнопку "Артқа"
-            document.getElementById("back-button").style.display = "inline-block";
-        }
-
-        // Обработчик кликов на жанры
-        document.querySelectorAll(".catalog-item").forEach(item => {
-            item.addEventListener("click", function() {
-                const genre = this.getAttribute("data-genre");
-                showBooks(genre);
-            });
+          bookDiv.innerHTML = `
+            <img src="${book.image}" alt="${book.title}">
+            <h3>${book.title}</h3>
+            <p>${book.description}</p>
+            <button onclick="buyBook('${book.pdf}')">Кітапты жүктеу</button>
+          `;
+          booksSection.appendChild(bookDiv);
         });
+      });
+    });
 
-        // Обработчик кнопки "Артқа"
-        document.getElementById("back-button").addEventListener("click", function() {
-            document.getElementById("catalog-container").style.display = "flex";  // Показываем каталог
-            document.getElementById("book-container").style.display = "none";  // Скрываем список книг
-            this.style.display = "none";  // Скрываем кнопку "Артқа"
-        });
-    </script>
+    function buyBook(pdf) {
+      alert("Кітапты жүктеу үшін Kaspi нөміріне төлем жасаңыз: +77072258658. Төлем жасалғаннан кейін файлды жүктей аласыз.");
+    }
+  </script>
 </body>
 </html>
