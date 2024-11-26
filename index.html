@@ -3,205 +3,171 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Кітап жәрмеңкесі</title>
+    <title>Кітаптар Каталогы</title>
     <style>
         body {
             font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
             margin: 0;
             padding: 0;
-            background-color: #f5f5f5;
         }
-        header {
-            background-color: #1e1e2f;
-            color: white;
-            text-align: center;
-            padding: 20px;
-            font-size: 24px;
-        }
-        .catalog-container {
+
+        .catalog {
             display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin: 20px;
-        }
-        .catalog-button {
-            background-color: #4CAF50;
-            color: white;
-            margin: 10px;
-            padding: 15px 30px;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            font-size: 18px;
-            display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
-            transition: transform 0.3s ease;
-        }
-        .catalog-button:hover {
-            transform: scale(1.1);
-            background-color: #45a049;
-        }
-        .catalog-button img {
-            width: 40px;
-            height: 40px;
-            margin-right: 10px;
-        }
-        .book-list, .book-details {
-            display: none;
             padding: 20px;
-            text-align: center;
         }
+
         .book-list {
-            background-color: #fff;
-            margin: 20px;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            max-width: 1200px;
+            margin-top: 30px;
         }
+
         .book-item {
-            margin: 10px;
-            padding: 15px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
+            text-align: center;
             cursor: pointer;
         }
-        .book-item:hover {
-            background-color: #f0f0f0;
+
+        .book-item img {
+            width: 100px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
         }
+
         .book-details {
-            background-color: white;
-            margin: 20px;
             padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            text-align: center;
+            margin-top: 50px;
+            background-color: #fff;
+            border-radius: 8px;
+            max-width: 900px;
+            margin: auto;
+            display: none;
         }
-        .book-image {
-            max-width: 100%;
-            height: auto;
-            border-radius: 10px;
+
+        .book-details h2 {
+            font-size: 24px;
+            color: #333;
         }
-        .buy-button {
-            background-color: #007BFF;
-            color: white;
+
+        .book-details p {
+            font-size: 18px;
+            color: #666;
+        }
+
+        .button {
+            margin-top: 20px;
             padding: 10px 20px;
+            background-color: #007BFF;
+            color: #fff;
             border: none;
             border-radius: 5px;
-            margin-top: 15px;
             cursor: pointer;
         }
-        .buy-button:hover {
+
+        .button:hover {
             background-color: #0056b3;
         }
     </style>
 </head>
 <body>
+    <div class="catalog">
+        <h1>Кітаптар Каталогы</h1>
+        <div class="book-list">
+            <!-- Кітаптар тізімі -->
+            <div class="book-item" onclick="viewBookDetails(0)">
+                <img src="https://via.placeholder.com/100x150?text=Dune" alt="Дюна">
+                <h3>Дюна</h3>
+            </div>
+            <div class="book-item" onclick="viewBookDetails(1)">
+                <img src="https://via.placeholder.com/100x150?text=1984" alt="1984">
+                <h3>1984</h3>
+            </div>
+            <div class="book-item" onclick="viewBookDetails(2)">
+                <img src="https://via.placeholder.com/100x150?text=Frankenstein" alt="Франкенштейн">
+                <h3>Франкенштейн</h3>
+            </div>
+            <div class="book-item" onclick="viewBookDetails(3)">
+                <img src="https://via.placeholder.com/100x150?text=Starwars" alt="Жұлдызды соғыстар">
+                <h3>Жұлдызды соғыстар</h3>
+            </div>
+            <div class="book-item" onclick="viewBookDetails(4)">
+                <img src="https://via.placeholder.com/100x150?text=Matrix" alt="Матрица">
+                <h3>Матрица</h3>
+            </div>
+        </div>
+    </div>
 
-<header>Кітап жәрмеңкесі</header>
+    <div id="book-details" class="book-details">
+        <!-- Кітаптың толық мәліметі -->
+    </div>
 
-<div class="catalog-container">
-    <button class="catalog-button" onclick="showBooks('fantasy')">
-        <img src="fantasy-icon.png" alt="Фантастика"> Фантастика
-    </button>
-    <button class="catalog-button" onclick="showBooks('detective')">
-        <img src="detective-icon.png" alt="Детектив"> Детектив
-    </button>
-    <button class="catalog-button" onclick="showBooks('romance')">
-        <img src="romance-icon.png" alt="Романтика"> Романтика
-    </button>
-    <button class="catalog-button" onclick="showBooks('adventure')">
-        <img src="adventure-icon.png" alt="Приключения"> Приключения
-    </button>
-    <button class="catalog-button" onclick="showBooks('science')">
-        <img src="science-icon.png" alt="Ғылыми әдебиет"> Ғылыми әдебиет
-    </button>
-    <button class="catalog-button" onclick="showBooks('selfdevelopment')">
-        <img src="selfdevelopment-icon.png" alt="Саморазвитие"> Саморазвитие
-    </button>
-</div>
+    <script>
+        const books = [
+            {
+                title: "Дюна",
+                description: "Шөлдегі күрес пен саяси ойындар.",
+                image: "https://via.placeholder.com/100x150?text=Dune",
+                releaseDate: "1965",
+                author: "Фрэнк Герберт",
+                price: "5000 тг"
+            },
+            {
+                title: "1984",
+                description: "Тоталитарлық қоғамның болашағы.",
+                image: "https://via.placeholder.com/100x150?text=1984",
+                releaseDate: "1949",
+                author: "Джордж Орвелл",
+                price: "4000 тг"
+            },
+            {
+                title: "Франкенштейн",
+                description: "Ғылымның қауіпті жақтары.",
+                image: "https://via.placeholder.com/100x150?text=Frankenstein",
+                releaseDate: "1818",
+                author: "Мэри Шелли",
+                price: "3000 тг"
+            },
+            {
+                title: "Жұлдызды соғыстар",
+                description: "Ғарышта шытырман оқиғалар.",
+                image: "https://via.placeholder.com/100x150?text=Starwars",
+                releaseDate: "1977",
+                author: "Джордж Лукас",
+                price: "5500 тг"
+            },
+            {
+                title: "Матрица",
+                description: "Жасанды интеллект әлемі.",
+                image: "https://via.placeholder.com/100x150?text=Matrix",
+                releaseDate: "1999",
+                author: "Лана және Лилли Вачовски",
+                price: "6000 тг"
+            }
+        ];
 
-<div id="book-list" class="book-list"></div>
+        function viewBookDetails(index) {
+            const book = books[index];
+            const details = document.getElementById('book-details');
+            details.style.display = 'block';
+            details.innerHTML = `
+                <h2>${book.title}</h2>
+                <img src="${book.image}" alt="${book.title}">
+                <p><strong>Автор:</strong> ${book.author}</p>
+                <p><strong>Шыққан күні:</strong> ${book.releaseDate}</p>
+                <p><strong>Сипаттама:</strong> ${book.description}</p>
+                <p><strong>Бағасы:</strong> ${book.price}</p>
+                <button class="button" onclick="purchaseBook()">Сатып алу</button>
+            `;
+        }
 
-<div id="book-details" class="book-details">
-    <img id="book-image" class="book-image" src="" alt="Кітап суреті">
-    <h2 id="book-title"></h2>
-    <p id="book-description"></p>
-    <button class="buy-button" onclick="buyBook()">Кітапты сатып алу</button>
-</div>
-
-<script>
-    const books = {
-    fantasy: [
-        { title: "Дюна", description: "Шөлдегі күрес пен саяси ойындар.", image: "dune.jpg" },
-        { title: "1984", description: "Тоталитарлық қоғамның болашағы.", image: "1984.jpg" },
-        { title: "Франкенштейн", description: "Ғылымның қауіпті жақтары.", image: "frankenstein.jpg" },
-        { title: "Жұлдызды соғыстар", description: "Ғарышта шытырман оқиғалар.", image: "starwars.jpg" },
-        { title: "Матрица", description: "Жасанды интеллект әлемі.", image: "matrix.jpg" }
-    ],
-    detective: [
-        { title: "Шерлок Холмс", description: "Ұлы детективтің кейіпкерлері.", image: "sherlock.jpg" },
-        { title: "По следам преступников", description: "Қылмыстарды шешу жолы.", image: "crime.jpg" },
-        { title: "Агата Кристи: Убийство в Восточном экспрессе", description: "Танымал детектив жазушысының шығармасы.", image: "agatha.jpg" },
-        { title: "Девушка с татуировкой дракона", description: "Қылмыс пен зерттеу арқылы ашылатын құпия.", image: "dragon-tattoo.jpg" },
-        { title: "Тайна третьей планеты", description: "Ғылым мен детективтің бірлесуі.", image: "thirdplanet.jpg" }
-    ],
-    romance: [
-        { title: "Тет-а-тет", description: "Жас жұбайлардың өміріндегі қиындықтар.", image: "tetatet.jpg" },
-        { title: "Жауапсыз сұрақтар", description: "Ғашықтар арасындағы сұрақтар мен жауаптар.", image: "questions.jpg" },
-        { title: "Жоғалған қателік", description: "Махаббат туралы оқиға.", image: "mistake.jpg" },
-        { title: "Өмірдің екінші жартысы", description: "Ғашықтардың кездесу жолы.", image: "secondhalf.jpg" },
-        { title: "Жұлдыздарға ғашық", description: "Өмір мен махаббаттың әсемдігі.", image: "stars.jpg" }
-    ],
-    adventure: [
-        { title: "Индиана Джонс", description: "Археологтың қызықты шытырман оқиғасы.", image: "indiana.jpg" },
-        { title: "Көшпенділер", description: "Ежелгі уақыттағы адамдардың ерлігі.", image: "nomads.jpg" },
-        { title: "Гарри Поттер және философский камень", description: "Құпиялар мен оқиғалар әлемі.", image: "harrypotter.jpg" },
-        { title: "Жаңа әлем", description: "Табиғат пен адамдардың жаңа әлемі.", image: "newworld.jpg" },
-        { title: "Алтын аймақ", description: "Жас батырдың саяхаты мен ізденісі.", image: "goldenland.jpg" }
-    ],
-    science: [
-        { title: "Қара тесіктер", description: "Ғаламның құпиялары мен табиғаты.", image: "blackholes.jpg" },
-        { title: "Ғылым мен философия", description: "Ғылым мен философияның қиылысуы.", image: "science-philosophy.jpg" },
-        { title: "Жердің тарихы", description: "Жер тарихының толық баяны.", image: "earthhistory.jpg" },
-        { title: "Кванттық физика", description: "Кванттық әлемнің негізгі тұжырымдары.", image: "quantum.jpg" },
-        { title: "Ғаламның құрылымы", description: "Ғаламның ұлы құрылымы туралы зерттеу.", image: "universe.jpg" }
-    ],
-    selfdevelopment: [
-        { title: "Өзіңді табу", description: "Өмірдегі мән мен мақсатты түсіну.", image: "findyourself.jpg" },
-        { title: "Өзін-өзі басқару", description: "Жеке даму және өзін-өзі жетілдіру.", image: "selfcontrol.jpg" },
-        { title: "Мақсат қою", description: "Өмірдің басты мақсаттарын анықтау.", image: "goalsetting.jpg" },
-        { title: "Уақытты басқару", description: "Өмірдегі уақытты тиімді пайдалану.", image: "timemanagement.jpg" },
-        { title: "Психология", description: "Адамның мінез-құлқын түсіну.", image: "psychology.jpg" }
-    ]
-};
-function showBooks(category) {
-        const bookList = document.getElementById("book-list");
-        const bookDetails = document.getElementById("book-details");
-        bookList.innerHTML = "";
-        books[category].forEach((book, index) => {
-            const bookItem = document.createElement("div");
-            bookItem.className = "book-item";
-            bookItem.innerText = book.title;
-            bookItem.onclick = () => showDetails(category, index);
-            bookList.appendChild(bookItem);
-        });
-        bookList.style.display = "block";
-        bookDetails.style.display = "none";
-    }
-
-    function showDetails(category, index) {
-        const book = books[category][index];
-        document.getElementById("book-title").innerText = book.title;
-        document.getElementById("book-description").innerText = book.description;
-        document.getElementById("book-image").src = book.image;
-        document.getElementById("book-list").style.display = "none";
-        document.getElementById("book-details").style.display = "block";
-    }
-
-    function buyBook() {
-        window.location.href = "https://kaspi.kz/pay/+77072258658";
-    }
-</script>
-
+        function purchaseBook() {
+            alert("Кітапты сатып алу процесі басталды!");
+        }
+    </script>
 </body>
 </html>
