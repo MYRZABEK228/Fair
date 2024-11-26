@@ -3,172 +3,233 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Кітаптар дүкені</title>
+    <title>Кітап Жанрлары</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
             margin: 0;
-            padding: 0;
-            background-color: #f3f4f6;
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
             color: #333;
         }
+
         header {
-            background-color: #4CAF50;
+            background-color: #2c3e50;
             color: white;
-            padding: 20px;
+            padding: 30px;
             text-align: center;
+            animation: fadeInDown 1s;
         }
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 20px auto;
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            letter-spacing: 2px;
         }
-        .category {
-            margin-bottom: 20px;
-        }
-        .category h2 {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px;
-            border-radius: 5px;
-        }
-        .books {
+
+        .catalog-container {
             display: flex;
             flex-wrap: wrap;
             gap: 20px;
-            justify-content: space-between;
+            justify-content: center;
+            padding: 20px;
         }
-        .book-card {
+
+        .catalog-item {
             background-color: #fff;
             border: 1px solid #ddd;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            width: calc(20% - 10px);
+            border-radius: 10px;
+            width: 250px;
             text-align: center;
-            padding: 10px;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            animation: slideIn 0.5s ease-in-out;
         }
-        .book-card img {
+
+        .catalog-item img {
             width: 100%;
             height: 200px;
             object-fit: cover;
-            border-radius: 8px 8px 0 0;
+            border-radius: 10px 10px 0 0;
+            transition: opacity 0.5s;
         }
-        .book-title {
-            font-size: 1.1rem;
+
+        .catalog-item:hover img {
+            opacity: 0.8;
+        }
+
+        .catalog-item h3 {
+            margin: 10px 0;
+            font-size: 1.2rem;
+        }
+
+        .catalog-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .book-list {
+            display: none;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .book-card {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            text-align: center;
+            width: 200px;
+            padding: 15px;
+            animation: zoomIn 0.5s ease-in-out;
+        }
+
+        .book-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px;
+            transition: transform 0.5s;
+        }
+
+        .book-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .book-card h4 {
+            font-size: 1rem;
             margin: 10px 0;
         }
-        .book-desc {
-            font-size: 0.9rem;
-            color: #666;
-            margin: 10px 0;
-        }
-        .donate-btn {
-            background-color: #FF9800;
+
+        .buy-btn {
+            background-color: #3498db;
             color: white;
             padding: 10px 20px;
             border: none;
             border-radius: 5px;
             text-decoration: none;
+            font-size: 0.9rem;
             display: inline-block;
-            margin: 10px 0;
-            cursor: pointer;
+            margin-top: 10px;
+            transition: background-color 0.3s;
         }
-        .donate-btn:hover {
-            background-color: #e68900;
+
+        .buy-btn:hover {
+            background-color: #2980b9;
         }
-        footer {
-            background-color: #333;
+
+        .back-btn {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #e74c3c;
             color: white;
             text-align: center;
-            padding: 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            width: 150px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .back-btn:hover {
+            background-color: #c0392b;
+            transform: scale(1.05);
+        }
+
+        /* Анимации */
+        @keyframes fadeInDown {
+            from {
+                transform: translateY(-30px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes zoomIn {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Кітаптар дүкені</h1>
-        <p>Жанрлар бойынша үздік кітаптар</p>
+        <h1>Кітап Жанрлары</h1>
+        <p>Таңдаулы жанрды басыңыз, өзіңізге ұнайтын кітапты алыңыз!</p>
     </header>
 
-    <div class="container">
-        <!-- Категория: Фантастика -->
-        <div class="category">
-            <h2>Фантастика</h2>
-            <div class="books">
-                <div class="book-card">
-                    <img src="https://via.placeholder.com/300x200" alt="Кітап">
-                    <div class="book-title">Дюна</div>
-                    <div class="book-desc">Фрэнк Герберт</div>
-                    <a class="donate-btn" href="https://kaspi.kz/pay/+77072258658" target="_blank">Сатып алу</a>
-                </div>
-                <div class="book-card">
-                    <img src="https://via.placeholder.com/300x200" alt="Кітап">
-                    <div class="book-title">1984</div>
-                    <div class="book-desc">Джордж Оруэлл</div>
-                    <a class="donate-btn" href="https://kaspi.kz/pay/+77072258658" target="_blank">Сатып алу</a>
-                </div>
-                <div class="book-card">
-                    <img src="https://via.placeholder.com/300x200" alt="Кітап">
-                    <div class="book-title">Жат планета</div>
-                    <div class="book-desc">Рэй Брэдбери</div>
-                    <a class="donate-btn" href="https://kaspi.kz/pay/+77072258658" target="_blank">Сатып алу</a>
-                </div>
-                <div class="book-card">
-                    <img src="https://via.placeholder.com/300x200" alt="Кітап">
-                    <div class="book-title">Құдайдың кітабы</div>
-                    <div class="book-desc">Айзек Азимов</div>
-                    <a class="donate-btn" href="https://kaspi.kz/pay/+77072258658" target="_blank">Сатып алу</a>
-                </div>
-                <div class="book-card">
-                    <img src="https://via.placeholder.com/300x200" alt="Кітап">
-                    <div class="book-title">Гиперион</div>
-                    <div class="book-desc">Дэн Симмонс</div>
-                    <a class="donate-btn" href="https://kaspi.kz/pay/+77072258658" target="_blank">Сатып алу</a>
-                </div>
-            </div>
+    <div class="catalog-container">
+        <div class="catalog-item" data-genre="fantastic">
+            <img src="https://via.placeholder.com/250x200?text=Фантастика" alt="Фантастика">
+            <h3>Фантастика</h3>
         </div>
-
-        <!-- Категория: Фэнтези -->
-        <div class="category">
-            <h2>Фэнтези</h2>
-            <div class="books">
-                <div class="book-card">
-                    <img src="https://via.placeholder.com/300x200" alt="Кітап">
-                    <div class="book-title">Сақиналар әміршісі</div>
-                    <div class="book-desc">Дж. Р. Р. Толкин</div>
-                    <a class="donate-btn" href="https://kaspi.kz/pay/+77072258658" target="_blank">Сатып алу</a>
-                </div>
-                <div class="book-card">
-                    <img src="https://via.placeholder.com/300x200" alt="Кітап">
-                    <div class="book-title">Гарри Поттер</div>
-                    <div class="book-desc">Дж. К. Роулинг</div>
-                    <a class="donate-btn" href="https://kaspi.kz/pay/+77072258658" target="_blank">Сатып алу</a>
-                </div>
-                <div class="book-card">
-                    <img src="https://via.placeholder.com/300x200" alt="Кітап">
-                    <div class="book-title">Мұз және От әні</div>
-                    <div class="book-desc">Джордж Р. Р. Мартин</div>
-                    <a class="donate-btn" href="https://kaspi.kz/pay/+77072258658" target="_blank">Сатып алу</a>
-                </div>
-                <div class="book-card">
-                    <img src="https://via.placeholder.com/300x200" alt="Кітап">
-                    <div class="book-title">Эрагон</div>
-                    <div class="book-desc">Кристофер Паолини</div>
-                    <a class="donate-btn" href="https://kaspi.kz/pay/+77072258658" target="_blank">Сатып алу</a>
-                </div>
-                <div class="book-card">
-                    <img src="https://via.placeholder.com/300x200" alt="Кітап">
-                    <div class="book-title">Қара мұнара</div>
-                    <div class="book-desc">Стивен Кинг</div>
-                    <a class="donate-btn" href="https://kaspi.kz/pay/+77072258658" target="_blank">Сатып алу</a>
-                </div>
-            </div>
+        <div class="catalog-item" data-genre="detective">
+            <img src="https://via.placeholder.com/250x200?text=Детектив" alt="Детектив">
+            <h3>Детектив</h3>
+        </div>
+        <div class="catalog-item" data-genre="romance">
+            <img src="https://via.placeholder.com/250x200?text=Романтика" alt="Романтика">
+            <h3>Романтика</h3>
+        </div>
+        <div class="catalog-item" data-genre="adventure">
+            <img src="https://via.placeholder.com/250x200?text=Приключения" alt="Приключения">
+            <h3>Приключения</h3>
+        </div>
+        <div class="catalog-item" data-genre="science">
+            <img src="https://via.placeholder.com/250x200?text=Ғылым" alt="Ғылым">
+            <h3>Ғылым</h3>
+        </div>
+        <div class="catalog-item" data-genre="history">
+            <img src="https://via.placeholder.com/250x200?text=Тарих" alt="Тарих">
+            <h3>Тарих</h3>
+        </div>
+        <div class="catalog-item" data-genre="horror">
+            <img src="https://via.placeholder.com/250x200?text=Қорқыныш" alt="Қорқыныш">
+            <h3>Қорқыныш</h3>
         </div>
     </div>
 
-    <footer>
-        <p>&copy; 2024 Кітаптар дүкені. Барлық құқықтар қорғалған.</p>
-        <p>Көмек қажет болса, бізге хабарласыңыз: +77072258658</p>
-    </footer>
-</body>
-</html>
+    <div id="book-container">
+        <!-- Карточки книг будут динамически загружаться через JS -->
+    </div>
+
+    <a href="#" id="back-button" class="back-btn" style="display: none;">Артқа</a>
+
+    <script>
+        const genres = {
+            fantastic: [
+                { title: "Дюна", img: "https://via.placeholder.com/200x150?text=Dune", pdf: "dune.pdf" },
+                { title: "Фонд", img: "https://via.placeholder.com/200x150?text=Foundation", pdf: "foundation.pdf" },
+                { title: "451° Фаренгейт", img: "https://via.placeholder.com/200x150?text=451°F", pdf: "451.pdf" },
+                { title: "Марсианин", img: "https://via.placeholder.com/200x150?text=Martian", pdf: "martian.pdf" },
+                { title: "Робинзон Крузо", img: "https://via.placeholder.com/200x150?text=Crusoe", pdf: "crusoe.pdf" },
+            ],
+            detective: [
+                { title: "Шерлок Холмс", img: "https://via.placeholder.com/200x150?text=Sherlock", pdf: "sherlock.pdf" },
+                { title: "Десять негритят", img: "https://via.placeholder.com/200x150?text=Ten", pdf: "ten.pdf" },
+                { title: "Агата Кристи", img: "https://via.placeholder.com/200x150?text=Agatha", pdf: "agatha.pdf" },
+                { title: "Убийство в Восточном экспрессе", img: "https://via.placeholder.com/200x150?text=Murder", pdf: "murder.pdf" },
+                { title: "Американский психопат", img: "https://via.placeholder.com/200x150?text=Psycho", pdf: "psycho.pdf" },
+            ],
+            romance: [
+                { title: "Гордость и предубеждение", img: "https://via.placeholder.com/200x150?text=Pride", pdf: "pride.pdf" },
