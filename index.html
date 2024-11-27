@@ -64,7 +64,6 @@
             border: 1px solid #ddd;
             border-radius: 8px;
             cursor: pointer;
-            font-size: 18px;
         }
         .book-item:hover {
             background-color: #f0f0f0;
@@ -127,115 +126,82 @@
     <img id="book-image" class="book-image" src="" alt="Кітап суреті">
     <h2 id="book-title"></h2>
     <p id="book-description"></p>
-    <p id="book-release-date"></p>
     <button class="buy-button" onclick="buyBook()">Кітапты сатып алу</button>
 </div>
 
 <script>
     const books = {
-        fantasy: [
-            { title: "Дюна", description: "Шөлдегі күрес пен саяси ойындар.", releaseDate: "1965", image: "dune.jpg" },
-            { title: "1984", description: "Тоталитарлық қоғамның болашағы.", releaseDate: "1949", image: "1984.jpg" },
-            { title: "Франкенштейн", description: "Ғылымның қауіпті жақтары.", releaseDate: "1818", image: "frankenstein.jpg" },
-            { title: "Жұлдызды соғыстар", description: "Ғарышта шытырман оқиғалар.", releaseDate: "1977", image: "starwars.jpg" },
-            { title: "Матрица", description: "Жасанды интеллект әлемі.", releaseDate: "1999", image: "matrix.jpg" }
-        ],
-        detective: [
-            { title: "Шерлок Холмс", description: "Ұлы детективтің кейіпкерлері.", releaseDate: "1887", image: "sherlock.jpg" },
-            { title: "По следам преступников", description: "Қылмыстарды шешу жолы.", releaseDate: "1990", image: "crime.jpg" },
-            { title: "Агата Кристи: Убийство в Восточном экспрессе", description: "Танымал детектив жазушысының шығармасы.", releaseDate: "1934", image: "agatha.jpg" },
-            { title: "Девушка с татуировкой дракона", description: "Қылмыс пен зерттеу арқылы ашылатын құпия.", releaseDate: "2005", image: "dragon-tattoo.jpg" },
-            { title: "Тайна третьей планеты", description: "Ғылым мен детективтің бірлесуі.", releaseDate: "1981", image: "thirdplanet.jpg" }
-        ],
-        romance: [
-            { title: "Тет-а-тет", description: "Жас жұбайлардың өміріндегі қиындықтар.", releaseDate: "2015", image: "tetatet.jpg" },
-            { title: "Жауапсыз сұрақтар", description: "Ғашықтар арасындағы сұрақтар мен жауаптар.", releaseDate: "2010", image: "questions.jpg" },
-            { title: "Жоғалған қателік", description: "Махаббат туралы оқиға.", releaseDate: "2012", image: "mistake.jpg" },
-            { title: "Өмірдің екінші жартысы", description: "Ғашықтардың кездесу жолы.", releaseDate: "2008", image: "secondhalf.jpg" },
-            { title: "Жұлдыздарға ғашық", description: "Өмір мен махаббаттың әсемдігі.", releaseDate: "2018", image: "stars.jpg" }
-        ],
-        adventure: [
-            { title: "Индиана Джонс", description: "Археологтың қызықты шытырман оқиғасы.", releaseDate: "1981", image: "indiana.jpg" },
-            { title: "Көшпенділер", description: "Ежелгі уақыттағы адамдардың ерлігі.", releaseDate: "1994", image: "nomads.jpg" },
-            { title: "Гарри Поттер және философский камень", description: "Құпиялар мен оқиғалар әлемі.", releaseDate: "1997", image: "harrypotter.jpg" },
-            { title: "Жаңа әлем", description: "Табиғат пен адамдардың жаңа әлемі.", releaseDate: "2020", image: "newworld.jpg" },
-            { title: "Алтын аймақ", description: "Жас батырдың саяхаты мен ізденісі.", releaseDate: "2015", image: "goldenland.jpg" }
-        ],
-        science: [
-            {
-                title: "A Brief History of Time",
-                description: "Stephen Hawking's groundbreaking work on the nature of time and the universe.",
-                image: "https://example.com/brief-history-of-time.jpg"
-            },
-            {
-                title: "The Selfish Gene",
-                description: "Richard Dawkins' influential work on the theory of evolution and the role of genes in survival.",
-                image: "https://example.com/selfish-gene.jpg"
-            }
-        ],
-        technology: [
-            {
-                title: "The Innovators",
-                description: "Walter Isaacson's chronicle of the people who created the computer and the internet.",
-                image: "https://example.com/innovators.jpg"
-            },
-            {
-                title: "Steve Jobs",
-                description: "The biography of Steve Jobs by Walter Isaacson, capturing the vision and innovations of Apple's co-founder.",
-                image: "https://example.com/steve-jobs.jpg"
-            }
-        ],
-        history: [
-            {
-                title: "Sapiens: A Brief History of Humankind",
-                description: "Yuval Noah Harari's look at the history of human civilization, from the Stone Age to the modern day.",
-                image: "https://example.com/sapiens.jpg"
-            },
-            {
-                title: "The Wright Brothers",
-                description: "David McCullough's account of the lives and achievements of the Wright brothers, pioneers of aviation.",
-                image: "https://example.com/wright-brothers.jpg"
-            }
-        ]
-    };
-
-    // Кітаптар санатындағы кітаптарды көрсету
-    function showBooks(category) {
+    fantasy: [
+        { title: "Дюна", description: "Шөлдегі күрес пен саяси ойындар.", image: "dune.jpg" },
+        { title: "1984", description: "Тоталитарлық қоғамның болашағы.", image: "1984.jpg" },
+        { title: "Франкенштейн", description: "Ғылымның қауіпті жақтары.", image: "frankenstein.jpg" },
+        { title: "Жұлдызды соғыстар", description: "Ғарышта шытырман оқиғалар.", image: "starwars.jpg" },
+        { title: "Матрица", description: "Жасанды интеллект әлемі.", image: "matrix.jpg" }
+    ],
+    detective: [
+        { title: "Шерлок Холмс", description: "Ұлы детективтің кейіпкерлері.", image: "sherlock.jpg" },
+        { title: "По следам преступников", description: "Қылмыстарды шешу жолы.", image: "crime.jpg" },
+        { title: "Агата Кристи: Убийство в Восточном экспрессе", description: "Танымал детектив жазушысының шығармасы.", image: "agatha.jpg" },
+        { title: "Девушка с татуировкой дракона", description: "Қылмыс пен зерттеу арқылы ашылатын құпия.", image: "dragon-tattoo.jpg" },
+        { title: "Тайна третьей планеты", description: "Ғылым мен детективтің бірлесуі.", image: "thirdplanet.jpg" }
+    ],
+    romance: [
+        { title: "Тет-а-тет", description: "Жас жұбайлардың өміріндегі қиындықтар.", image: "tetatet.jpg" },
+        { title: "Жауапсыз сұрақтар", description: "Ғашықтар арасындағы сұрақтар мен жауаптар.", image: "questions.jpg" },
+        { title: "Жоғалған қателік", description: "Махаббат туралы оқиға.", image: "mistake.jpg" },
+        { title: "Өмірдің екінші жартысы", description: "Ғашықтардың кездесу жолы.", image: "secondhalf.jpg" },
+        { title: "Жұлдыздарға ғашық", description: "Өмір мен махаббаттың әсемдігі.", image: "stars.jpg" }
+    ],
+    adventure: [
+        { title: "Индиана Джонс", description: "Археологтың қызықты шытырман оқиғасы.", image: "indiana.jpg" },
+        { title: "Көшпенділер", description: "Ежелгі уақыттағы адамдардың ерлігі.", image: "nomads.jpg" },
+        { title: "Гарри Поттер және философский камень", description: "Құпиялар мен оқиғалар әлемі.", image: "harrypotter.jpg" },
+        { title: "Жаңа әлем", description: "Табиғат пен адамдардың жаңа әлемі.", image: "newworld.jpg" },
+        { title: "Алтын аймақ", description: "Жас батырдың саяхаты мен ізденісі.", image: "goldenland.jpg" }
+    ],
+    science: [
+        { title: "Қара тесіктер", description: "Ғаламның құпиялары мен табиғаты.", image: "blackholes.jpg" },
+        { title: "Ғылым мен философия", description: "Ғылым мен философияның қиылысуы.", image: "science-philosophy.jpg" },
+        { title: "Жердің тарихы", description: "Жер тарихының толық баяны.", image: "earthhistory.jpg" },
+        { title: "Кванттық физика", description: "Кванттық әлемнің негізгі тұжырымдары.", image: "quantum.jpg" },
+        { title: "Ғаламның құрылымы", description: "Ғаламның ұлы құрылымы туралы зерттеу.", image: "universe.jpg" }
+    ],
+    selfdevelopment: [
+        { title: "Өзіңді табу", description: "Өмірдегі мән мен мақсатты түсіну.", image: "findyourself.jpg" },
+        { title: "Өзін-өзі басқару", description: "Жеке даму және өзін-өзі жетілдіру.", image: "selfcontrol.jpg" },
+        { title: "Мақсат қою", description: "Өмірдің басты мақсаттарын анықтау.", image: "goalsetting.jpg" },
+        { title: "Уақытты басқару", description: "Өмірдегі уақытты тиімді пайдалану.", image: "timemanagement.jpg" },
+        { title: "Психология", description: "Адамның мінез-құлқын түсіну.", image: "psychology.jpg" }
+    ]
+};
+function showBooks(category) {
         const bookList = document.getElementById("book-list");
         const bookDetails = document.getElementById("book-details");
-        bookList.innerHTML = "";  // Бұрынғы кітаптар тізімін тазалау
-
-        // Әр кітап үшін кітап элементін қосу
+        bookList.innerHTML = "";
         books[category].forEach((book, index) => {
             const bookItem = document.createElement("div");
             bookItem.className = "book-item";
             bookItem.innerText = book.title;
-            bookItem.onclick = () => showDetails(category, index);  // Кітап туралы ақпаратты көрсету
+            bookItem.onclick = () => showDetails(category, index);
             bookList.appendChild(bookItem);
         });
-
-        // Кітаптар тізімін көрсету, кітаптың егжей-тегжейін жасыру
         bookList.style.display = "block";
         bookDetails.style.display = "none";
     }
 
-    // Кітаптың егжей-тегжейін көрсету
     function showDetails(category, index) {
         const book = books[category][index];
         document.getElementById("book-title").innerText = book.title;
         document.getElementById("book-description").innerText = book.description;
         document.getElementById("book-image").src = book.image;
-
-        // Кітаптар тізімін жасыру, кітап туралы мәліметті көрсету
         document.getElementById("book-list").style.display = "none";
         document.getElementById("book-details").style.display = "block";
     }
 
-    // Кітапты сатып алу функциясы
     function buyBook() {
-        // Кітапты сатып алу үшін сілтеме жасау
         window.location.href = "https://kaspi.kz/pay/+77072258658";
     }
 </script>
+
 </body>
 </html>
