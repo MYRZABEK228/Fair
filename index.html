@@ -1,207 +1,131 @@
-<!DOCTYPE html>
-<html lang="kk">
+<!DOCTYPE html><html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Кітап жәрмеңкесі</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f5f5f5;
-        }
-        header {
-            background-color: #1e1e2f;
-            color: white;
-            text-align: center;
-            padding: 20px;
-            font-size: 24px;
-        }
-        .catalog-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin: 20px;
-        }
-        .catalog-button {
-            background-color: #4CAF50;
-            color: white;
-            margin: 10px;
-            padding: 15px 30px;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            font-size: 18px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: transform 0.3s ease;
-        }
-        .catalog-button:hover {
-            transform: scale(1.1);
-            background-color: #45a049;
-        }
-        .catalog-button img {
-            width: 40px;
-            height: 40px;
-            margin-right: 10px;
-        }
-        .book-list, .book-details {
-            display: none;
-            padding: 20px;
-            text-align: center;
-        }
-        .book-list {
-            background-color: #fff;
-            margin: 20px;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-        .book-item {
-            margin: 10px;
-            padding: 15px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            cursor: pointer;
-        }
-        .book-item:hover {
-            background-color: #f0f0f0;
-        }
-        .book-details {
-            background-color: white;
-            margin: 20px;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            text-align: center;
-        }
-        .book-image {
-            max-width: 100%;
-            height: auto;
-            border-radius: 10px;
-        }
-        .buy-button {
-            background-color: #007BFF;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            margin-top: 15px;
-            cursor: pointer;
-        }
-        .buy-button:hover {
-            background-color: #0056b3;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Почему она обиделась?</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(120deg, #ffe6e6, #ffcccc);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }.card {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  max-width: 500px;
+  animation: floatIn 1.2s ease-out;
+}
+
+h1 {
+  font-family: 'Pacifico', cursive;
+  font-size: 2.5rem;
+  color: #d6336c;
+  margin-bottom: 1rem;
+}
+
+p {
+  font-size: 1.2rem;
+  color: #333;
+  margin: 1rem 0;
+  opacity: 0;
+  animation: fadeIn 1.2s forwards;
+}
+
+p:nth-child(2) { animation-delay: 1s; }
+p:nth-child(3) { animation-delay: 2s; }
+p:nth-child(4) { animation-delay: 3s; }
+p:nth-child(5) { animation-delay: 4s; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes floatIn {
+  from { transform: translateY(-50px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.heart {
+  font-size: 2rem;
+  animation: pulse 1.5s infinite;
+  color: #ff4d6d;
+  margin-top: 1.5rem;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+form {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  opacity: 0;
+  animation: fadeIn 1.2s forwards;
+  animation-delay: 5s;
+}
+
+textarea {
+  resize: none;
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+}
+
+button {
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  background-color: #d6336c;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background-color: #b02558;
+}
+
+  </style>
 </head>
 <body>
-
-<header>Кітап жәрмеңкесі</header>
-
-<div class="catalog-container">
-    <button class="catalog-button" onclick="showBooks('fantasy')">
-        <img src="fantasy-icon.png" alt="Фантастика"> Фантастика
-    </button>
-    <button class="catalog-button" onclick="showBooks('detective')">
-        <img src="detective-icon.png" alt="Детектив"> Детектив
-    </button>
-    <button class="catalog-button" onclick="showBooks('romance')">
-        <img src="romance-icon.png" alt="Романтика"> Романтика
-    </button>
-    <button class="catalog-button" onclick="showBooks('adventure')">
-        <img src="adventure-icon.png" alt="Приключения"> Приключения
-    </button>
-    <button class="catalog-button" onclick="showBooks('science')">
-        <img src="science-icon.png" alt="Ғылыми әдебиет"> Ғылыми әдебиет
-    </button>
-    <button class="catalog-button" onclick="showBooks('selfdevelopment')">
-        <img src="selfdevelopment-icon.png" alt="Саморазвитие"> Саморазвитие
-    </button>
-</div>
-
-<div id="book-list" class="book-list"></div>
-
-<div id="book-details" class="book-details">
-    <img id="book-image" class="book-image" src="" alt="Кітап суреті">
-    <h2 id="book-title"></h2>
-    <p id="book-description"></p>
-    <button class="buy-button" onclick="buyBook()">Кітапты сатып алу</button>
-</div>
-
-<script>
-    const books = {
-    fantasy: [
-        { title: "Дюна", description: "Шөлдегі күрес пен саяси ойындар.", image: "https://www.google.com/imgres?imgurl=https%3A%2F%2Fsimg.marwin.kz%2Fmedia%2Fcatalog%2Fproduct%2Fcache%2F8d1771fdd19ec2393e47701ba45e606d%2Fc%2Fo%2Fgerbert_f_dyuna_8.jpg&tbnid=D-2NlGFJKrHIgM&vet=1&imgrefurl=https%3A%2F%2Fwww.marwin.kz%2Ffiction-and-fantasy%2Fgerbert-f-djuna-1323843.html&docid=eauY77aXCHheqM&w=700&h=700&hl=ru-RU&source=sh%2Fx%2Fim%2Fm1%2F4&kgs=989235c4bc9f6377&shem=abme%2Ctrie" },
-        { title: "1984", description: "Тоталитарлық қоғамның болашағы.", image: "1984.jpg" },
-        { title: "Франкенштейн", description: "Ғылымның қауіпті жақтары.", image: "frankenstein.jpg" },
-        { title: "Жұлдызды соғыстар", description: "Ғарышта шытырман оқиғалар.", image: "starwars.jpg" },
-        { title: "Матрица", description: "Жасанды интеллект әлемі.", image: "matrix.jpg" }
-    ],
-    detective: [
-        { title: "Шерлок Холмс", description: "Ұлы детективтің кейіпкерлері.", image: "sherlock.jpg" },
-        { title: "По следам преступников", description: "Қылмыстарды шешу жолы.", image: "crime.jpg" },
-        { title: "Агата Кристи: Убийство в Восточном экспрессе", description: "Танымал детектив жазушысының шығармасы.", image: "agatha.jpg" },
-        { title: "Девушка с татуировкой дракона", description: "Қылмыс пен зерттеу арқылы ашылатын құпия.", image: "dragon-tattoo.jpg" },
-        { title: "Тайна третьей планеты", description: "Ғылым мен детективтің бірлесуі.", image: "thirdplanet.jpg" }
-    ],
-    romance: [
-        { title: "Тет-а-тет", description: "Жас жұбайлардың өміріндегі қиындықтар.", image: "tetatet.jpg" },
-        { title: "Жауапсыз сұрақтар", description: "Ғашықтар арасындағы сұрақтар мен жауаптар.", image: "questions.jpg" },
-        { title: "Жоғалған қателік", description: "Махаббат туралы оқиға.", image: "mistake.jpg" },
-        { title: "Өмірдің екінші жартысы", description: "Ғашықтардың кездесу жолы.", image: "secondhalf.jpg" },
-        { title: "Жұлдыздарға ғашық", description: "Өмір мен махаббаттың әсемдігі.", image: "stars.jpg" }
-    ],
-    adventure: [
-        { title: "Индиана Джонс", description: "Археологтың қызықты шытырман оқиғасы.", image: "indiana.jpg" },
-        { title: "Көшпенділер", description: "Ежелгі уақыттағы адамдардың ерлігі.", image: "nomads.jpg" },
-        { title: "Гарри Поттер және философский камень", description: "Құпиялар мен оқиғалар әлемі.", image: "harrypotter.jpg" },
-        { title: "Жаңа әлем", description: "Табиғат пен адамдардың жаңа әлемі.", image: "newworld.jpg" },
-        { title: "Алтын аймақ", description: "Жас батырдың саяхаты мен ізденісі.", image: "goldenland.jpg" }
-    ],
-    science: [
-        { title: "Қара тесіктер", description: "Ғаламның құпиялары мен табиғаты.", image: "blackholes.jpg" },
-        { title: "Ғылым мен философия", description: "Ғылым мен философияның қиылысуы.", image: "science-philosophy.jpg" },
-        { title: "Жердің тарихы", description: "Жер тарихының толық баяны.", image: "earthhistory.jpg" },
-        { title: "Кванттық физика", description: "Кванттық әлемнің негізгі тұжырымдары.", image: "quantum.jpg" },
-        { title: "Ғаламның құрылымы", description: "Ғаламның ұлы құрылымы туралы зерттеу.", image: "universe.jpg" }
-    ],
-    selfdevelopment: [
-        { title: "Өзіңді табу", description: "Өмірдегі мән мен мақсатты түсіну.", image: "findyourself.jpg" },
-        { title: "Өзін-өзі басқару", description: "Жеке даму және өзін-өзі жетілдіру.", image: "selfcontrol.jpg" },
-        { title: "Мақсат қою", description: "Өмірдің басты мақсаттарын анықтау.", image: "goalsetting.jpg" },
-        { title: "Уақытты басқару", description: "Өмірдегі уақытты тиімді пайдалану.", image: "timemanagement.jpg" },
-        { title: "Психология", description: "Адамның мінез-құлқын түсіну.", image: "psychology.jpg" }
-    ]
-};
-function showBooks(category) {
-        const bookList = document.getElementById("book-list");
-        const bookDetails = document.getElementById("book-details");
-        bookList.innerHTML = "";
-        books[category].forEach((book, index) => {
-            const bookItem = document.createElement("div");
-            bookItem.className = "book-item";
-            bookItem.innerText = book.title;
-            bookItem.onclick = () => showDetails(category, index);
-            bookList.appendChild(bookItem);
-        });
-        bookList.style.display = "block";
-        bookDetails.style.display = "none";
+  <div class="card">
+    <h1>почему она обиделась?</h1>
+    <p>Ты не написал "доброе утро" первым 😢</p>
+    <p>Ты не заметил её новую причёску ✂️</p>
+    <p>Ты играл слишком долго в игры 🎮</p>
+    <p>Или просто... она ждала обнимашек 🤗</p>
+    <div class="heart">❤️</div>
+    <form onsubmit="sendReason(event)">
+      <textarea id="reason" rows="3" placeholder="Напиши свою причину..."></textarea>
+      <button type="submit">Отправить</button>
+    </form>
+  </div>  <script>
+    function sendReason(event) {
+      event.preventDefault();
+      const reason = document.getElementById('reason').value.trim();
+      if (reason) {
+        // Эмуляция отправки сообщения себе (можно заменить на настоящее API)
+        alert("Сообщение отправлено: " + reason);
+        document.getElementById('reason').value = '';
+      } else {
+        alert("Пожалуйста, напишите причину.");
+      }
     }
-
-    function showDetails(category, index) {
-        const book = books[category][index];
-        document.getElementById("book-title").innerText = book.title;
-        document.getElementById("book-description").innerText = book.description;
-        document.getElementById("book-image").src = book.image;
-        document.getElementById("book-list").style.display = "none";
-        document.getElementById("book-details").style.display = "block";
-    }
-
-    function buyBook() {
-        window.location.href = "https://kaspi.kz/pay/+77072258658";
-    }
-</script>
-
-</body>
+  </script></body>
 </html>
